@@ -357,6 +357,14 @@ export default function LandingPage({ onLaunchApp }: LandingPageProps) {
               </div>
               <h3 className="font-bold text-sm text-black mb-2">effective rate auditor</h3>
               <p className="text-xs text-[#555555] leading-relaxed max-w-sm">
+                calculates your actual hourly rate based on real hours worked vs target billing, showing you exactly where you leave margin on the table.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* Pricing grid — dark Lateral style */}
       <section id="pricing" className="relative z-10 bg-[#0a0a0a] py-24 flex flex-col items-center">
         <div className="max-w-6xl mx-auto px-8 w-full">
