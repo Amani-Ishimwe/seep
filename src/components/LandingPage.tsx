@@ -164,49 +164,98 @@ export default function LandingPage({ onLaunchApp }: LandingPageProps) {
 
 
 
-      {/* How it works section */}
-      <section id="how-it-works" className="relative z-10 border-t border-[#e0e0e0] bg-white py-20 flex flex-col items-center text-center">
+      {/* How it works */}
+      <section id="how-it-works" className="relative z-10 bg-[#fafafa] py-24 border-t border-[#e0e0e0]">
         <div className="max-w-5xl mx-auto px-8 w-full">
-          
-          <div className="max-w-xl mx-auto mb-16">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[#8e8e93] block mb-1">workflow</span>
-            <h2 className="text-3xl font-black tracking-tight text-[#0a0a0a]">recovering time leaks in 3 steps</h2>
+
+          {/* Header */}
+          <div className="mb-14">
+            <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#8e8e93] block mb-4">seep</span>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-[#0a0a0a] leading-tight mb-4">
+              three steps.<br />
+              <span className="text-[#8e8e93]">real fast.</span>
+            </h2>
+            <p className="text-sm text-[#555555] max-w-sm leading-relaxed">
+              from zero visibility to recovered revenue in under two minutes.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300">
-              <div className="w-12 h-12 bg-[#fafafa] border border-black/5 flex items-center justify-center mb-4">
-                <span className="text-xl font-black text-black font-sans">01</span>
+          {/* Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+            {/* Step 1 */}
+            <div className="bg-white border border-[#e0e0e0] p-6 flex flex-col gap-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <span className="w-7 h-7 rounded-full bg-black text-white text-[10px] font-black flex items-center justify-center">01</span>
+                <span className="text-[9px] font-semibold text-[#8e8e93] uppercase tracking-widest">&lt; 60 sec</span>
               </div>
-              <h3 className="font-bold text-sm text-black mb-2">connect workspace</h3>
-              <p className="text-xs text-[#555555] leading-relaxed max-w-xs">
-                link your calendar with one-click workspace authorization. seep observes in the background without keyloggers or screen trackers.
-              </p>
-            </div>
-            
-            <div className="flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300">
-              <div className="w-12 h-12 bg-[#fafafa] border border-black/5 flex items-center justify-center mb-4">
-                <span className="text-xl font-black text-black font-sans">02</span>
+              <div>
+                <h3 className="text-lg font-black text-[#0a0a0a] mb-2">connect workspace.</h3>
+                <p className="text-xs text-[#555555] leading-relaxed">
+                  link your google calendar with one-click auth. seep observes in the background — no keyloggers, no screen tracking.
+                </p>
               </div>
-              <h3 className="font-bold text-sm text-black mb-2">detect unbilled drift</h3>
-              <p className="text-xs text-[#555555] leading-relaxed max-w-xs">
-                seep flags overlapping client calls, meetings outside standard packages, or revisions that went unlogged.
-              </p>
+              {/* Preview element */}
+              <div className="mt-auto pt-4 border-t border-[#e0e0e0]">
+                <div className="flex items-center gap-2.5 px-3 py-2 bg-[#fafafa] border border-[#e0e0e0] w-fit">
+                  <i className="fa-brands fa-google text-black text-xs"></i>
+                  <span className="text-[10px] font-bold text-[#0a0a0a]">google calendar</span>
+                  <span className="text-[9px] text-[#8e8e93] ml-2">connected</span>
+                </div>
+              </div>
             </div>
 
-            <div className="flex flex-col items-center text-center hover:scale-[1.02] transition-transform duration-300">
-              <div className="w-12 h-12 bg-[#fafafa] border border-black/5 flex items-center justify-center mb-4">
-                <span className="text-xl font-black text-black font-sans">03</span>
+            {/* Step 2 */}
+            <div className="bg-white border border-[#e0e0e0] p-6 flex flex-col gap-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <span className="w-7 h-7 rounded-full bg-black text-white text-[10px] font-black flex items-center justify-center">02</span>
+                <span className="text-[9px] font-semibold text-[#8e8e93] uppercase tracking-widest">as long as it takes</span>
               </div>
-              <h3 className="font-bold text-sm text-black mb-2">claim leakage value</h3>
-              <p className="text-xs text-[#555555] leading-relaxed max-w-xs">
-                confirm the unbilled slot, draft copy-ready professional scope adjustments, and send to recover the funds.
-              </p>
+              <div>
+                <h3 className="text-lg font-black text-[#0a0a0a] mb-2">detect unbilled drift.</h3>
+                <p className="text-xs text-[#555555] leading-relaxed">
+                  seep flags overlapping client calls, unlogged revisions, and meetings outside your standard scope — automatically.
+                </p>
+              </div>
+              {/* Preview element */}
+              <div className="mt-auto pt-4 border-t border-[#e0e0e0] flex flex-col gap-2">
+                <div className="flex items-center justify-between px-3 py-2 bg-black/5 border border-black/10">
+                  <span className="text-[10px] font-bold text-[#0a0a0a]">revision call • 1.5 hrs</span>
+                  <span className="text-[9px] text-[#0a0a0a] font-semibold uppercase tracking-wide">unbilled</span>
+                </div>
+                <div className="flex items-center justify-between px-3 py-2 bg-[#fafafa] border border-[#e0e0e0]">
+                  <span className="text-[10px] font-bold text-[#555555]">weekly sync • 0.8 hrs</span>
+                  <span className="text-[9px] text-[#8e8e93] font-semibold uppercase tracking-wide">flagged</span>
+                </div>
+              </div>
             </div>
+
+            {/* Step 3 */}
+            <div className="bg-white border border-[#e0e0e0] p-6 flex flex-col gap-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <span className="w-7 h-7 rounded-full bg-black text-white text-[10px] font-black flex items-center justify-center">03</span>
+                <span className="text-[9px] font-semibold text-[#8e8e93] uppercase tracking-widest">&lt; 1 min</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-black text-[#0a0a0a] mb-2">claim &amp; recover.</h3>
+                <p className="text-xs text-[#555555] leading-relaxed">
+                  confirm the unbilled slot, fire off an ai-drafted scope notice, and recover the revenue. professional, stress-free, done.
+                </p>
+              </div>
+              {/* Preview element */}
+              <div className="mt-auto pt-4 border-t border-[#e0e0e0]">
+                <div className="flex items-center gap-2.5 px-3 py-2 bg-black text-white w-fit">
+                  <i className="fa-solid fa-circle-check text-white text-xs"></i>
+                  <span className="text-[10px] font-bold">$195.00 recovered</span>
+                  <i className="fa-solid fa-arrow-up-right-from-square text-white/60 text-[8px] ml-1"></i>
+                </div>
+              </div>
+            </div>
+
           </div>
-
         </div>
       </section>
+
 
       {/* Interactive Leak Calculator Section */}
       <section id="calculator" className="relative z-10 border-t border-[#e0e0e0] bg-[#fafafa] py-20 flex flex-col items-center text-center">
