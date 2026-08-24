@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@theme {
+  --font-sans: "Satoshi", "Inter", sans-serif;
+  
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #FAFAFA;
+  --color-bg-tertiary: #F2F2F2;
+  --color-bg-quaternary: #E8E8E8;
+  
+  --color-ink-primary: #0A0A0A;
+  --color-ink-secondary: #555555;
+  --color-ink-muted: #8E8E93;
+  
+  --color-border-low: rgba(0, 0, 0, 0.08);
+  --color-border-light: rgba(0, 0, 0, 0.06);
+  --color-border-color: #E0E0E0;
+
+  --radius-lg: 6px;
+  --radius-md: 4px;
+  --radius-sm: 2px;
+}
+
+/* Base resets & styles */
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-secondary);
+  color: var(--color-ink-primary);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Glassmorphism Panel styles */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.025), 0 2px 4px rgba(0, 0, 0, 0.01);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.3s ease;
+}
+
+.glass-panel:hover {
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.015);
+}
+
+/* Ambient floating shapes animation */
+@keyframes floatBG {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(40px, -40px) rotate(180deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg);
+  }
+}
+
+.animate-float-slow {
+  animation: floatBG 30s infinite linear;
+}
+
+.animate-float-slower {
+  animation: floatBG 45s infinite linear;
+}
+
+/* Pulsing scanner ring */
+@keyframes scanRing {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.animate-scan {
+  animation: scanRing 3s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Interactive SVG flow keyframes */
+@keyframes flowDown {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+.animate-flow {
+  animation: flowDown 4s infinite linear;
+}
+
+@keyframes dripDown {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(80px) scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(90px) scale(0);
+    opacity: 0;
+  }
+}
+
+.animate-drip {
+  animation: dripDown 2s infinite cubic-bezier(0.5, 0, 0.7, 0.5);
+}
+
+@keyframes scanLine {
+  0% { transform: translateY(-150%); }
+  100% { transform: translateY(250%); }
+}
+.animate-scan-line {
+  animation: scanLine 6s infinite linear;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
