@@ -352,64 +352,103 @@ export default function LandingPage({ onLaunchApp }: LandingPageProps) {
         </div>
       </section>
 
-      {/* Features grid section */}
-      <section id="features" className="relative z-10 border-t border-[#e0e0e0] bg-white py-20 flex flex-col items-center text-center">
-        <div className="max-w-5xl mx-auto px-8 w-full">
-          
-          <div className="max-w-xl mx-auto mb-16">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[#8e8e93] block mb-1">capabilities</span>
-            <h2 className="text-3xl font-black tracking-tight text-black">designed for independent builders</h2>
+      {/* Features — Jasper Platform style */}
+      <section id="features" className="relative z-10 border-t border-[#e0e0e0] bg-white py-24">
+        <div className="max-w-6xl mx-auto px-8 w-full">
+
+          {/* Split header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+            <div>
+              <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#8e8e93] flex items-center gap-1.5 mb-4">
+                <i className="fa-solid fa-droplet text-[8px] text-black"></i>
+                the seep platform
+              </span>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tight text-[#0a0a0a] leading-tight">
+                built for<br />
+                revenue recovery
+              </h2>
+            </div>
+            <div className="max-w-md">
+              <p className="text-sm text-[#555555] leading-relaxed mb-5">
+                seep is a purpose-built leak detection engine for freelancers and agencies. it deeply understands your billing patterns, surfaces unbilled hours, and drafts professional scope adjustments — so you keep what you earned.
+              </p>
+              <a href="#pricing" className="inline-flex items-center gap-2 px-5 py-2.5 border border-[#e0e0e0] text-[11px] font-bold text-[#0a0a0a] uppercase tracking-wider hover:bg-[#fafafa] transition-colors">
+                explore the platform
+              </a>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
-            {/* Feature 1 */}
-            <div className="glass-panel p-6 rounded-lg text-center flex flex-col items-center hover:scale-[1.02] hover:-translate-y-1 hover:border-black/15 transition-all duration-300 shadow-sm hover:shadow-md">
-              <div className="w-11 h-11 rounded-full bg-black text-white flex items-center justify-center mb-4">
-                <i className="fa-solid fa-satellite-dish text-sm"></i>
+          {/* 4-card row */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+            {/* Card 1 */}
+            <div className="bg-[#fafafa] border border-[#e0e0e0] p-6 flex flex-col gap-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group">
+              <div className="flex items-start justify-between">
+                <h3 className="text-base font-black text-[#0a0a0a] leading-tight">active<br />radar scanner</h3>
+                <div className="w-8 h-8 bg-white border border-[#e0e0e0] flex items-center justify-center shrink-0">
+                  <i className="fa-solid fa-satellite-dish text-[11px] text-[#0a0a0a]"></i>
+                </div>
               </div>
-              <h3 className="font-bold text-sm text-black mb-2">active radar scanner</h3>
-              <p className="text-xs text-[#555555] leading-relaxed max-w-sm">
-                our background tracking logic audits calendar overlaps and client messaging feeds to identify meetings that went unbilled.
+              <p className="text-xs text-[#555555] leading-relaxed flex-1">
+                background tracking logic audits calendar overlaps and client messaging feeds to identify meetings that went unbilled.
               </p>
+              <div className="pt-3 border-t border-[#e0e0e0]">
+                <span className="text-[#0a0a0a] text-sm group-hover:translate-x-1 transition-transform inline-block">→</span>
+              </div>
             </div>
 
-            {/* Feature 2 */}
-            <div className="glass-panel p-6 rounded-lg text-center flex flex-col items-center hover:scale-[1.02] hover:-translate-y-1 hover:border-black/15 transition-all duration-300 shadow-sm hover:shadow-md">
-              <div className="w-11 h-11 rounded-full bg-black text-white flex items-center justify-center mb-4">
-                <i className="fa-solid fa-wand-magic-sparkles text-sm"></i>
+            {/* Card 2 */}
+            <div className="bg-[#fafafa] border border-[#e0e0e0] p-6 flex flex-col gap-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group">
+              <div className="flex items-start justify-between">
+                <h3 className="text-base font-black text-[#0a0a0a] leading-tight">smart tag<br />associate</h3>
+                <div className="w-8 h-8 bg-white border border-[#e0e0e0] flex items-center justify-center shrink-0">
+                  <i className="fa-solid fa-wand-magic-sparkles text-[11px] text-[#0a0a0a]"></i>
+                </div>
               </div>
-              <h3 className="font-bold text-sm text-black mb-2">smart tag associate</h3>
-              <p className="text-xs text-[#555555] leading-relaxed max-w-sm">
+              <p className="text-xs text-[#555555] leading-relaxed flex-1">
                 automatically matches time slots to active clients using title patterns and email attendees. review confidence rankings before confirming.
               </p>
+              <div className="pt-3 border-t border-[#e0e0e0]">
+                <span className="text-[#0a0a0a] text-sm group-hover:translate-x-1 transition-transform inline-block">→</span>
+              </div>
             </div>
 
-            {/* Feature 3 */}
-            <div className="glass-panel p-6 rounded-lg text-center flex flex-col items-center hover:scale-[1.02] hover:-translate-y-1 hover:border-black/15 transition-all duration-300 shadow-sm hover:shadow-md">
-              <div className="w-11 h-11 rounded-full bg-black text-white flex items-center justify-center mb-4">
-                <i className="fa-solid fa-envelope text-sm"></i>
+            {/* Card 3 */}
+            <div className="bg-[#fafafa] border border-[#e0e0e0] p-6 flex flex-col gap-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group">
+              <div className="flex items-start justify-between">
+                <h3 className="text-base font-black text-[#0a0a0a] leading-tight">ai scope<br />adjustment drafts</h3>
+                <div className="w-8 h-8 bg-white border border-[#e0e0e0] flex items-center justify-center shrink-0">
+                  <i className="fa-solid fa-envelope text-[11px] text-[#0a0a0a]"></i>
+                </div>
               </div>
-              <h3 className="font-bold text-sm text-black mb-2">ai scope adjustment drafts</h3>
-              <p className="text-xs text-[#555555] leading-relaxed max-w-sm">
+              <p className="text-xs text-[#555555] leading-relaxed flex-1">
                 one-click professional notice drafts that make billing client revisions, scope drift, or calls stress-free and non-confrontational.
               </p>
+              <div className="pt-3 border-t border-[#e0e0e0]">
+                <span className="text-[#0a0a0a] text-sm group-hover:translate-x-1 transition-transform inline-block">→</span>
+              </div>
             </div>
 
-            {/* Feature 4 */}
-            <div className="glass-panel p-6 rounded-lg text-center flex flex-col items-center hover:scale-[1.02] hover:-translate-y-1 hover:border-black/15 transition-all duration-300 shadow-sm hover:shadow-md">
-              <div className="w-11 h-11 rounded-full bg-black text-white flex items-center justify-center mb-4">
-                <i className="fa-solid fa-chart-line text-sm"></i>
+            {/* Card 4 */}
+            <div className="bg-[#fafafa] border border-[#e0e0e0] p-6 flex flex-col gap-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group">
+              <div className="flex items-start justify-between">
+                <h3 className="text-base font-black text-[#0a0a0a] leading-tight">effective<br />rate auditor</h3>
+                <div className="w-8 h-8 bg-white border border-[#e0e0e0] flex items-center justify-center shrink-0">
+                  <i className="fa-solid fa-chart-line text-[11px] text-[#0a0a0a]"></i>
+                </div>
               </div>
-              <h3 className="font-bold text-sm text-black mb-2">effective rate auditor</h3>
-              <p className="text-xs text-[#555555] leading-relaxed max-w-sm">
+              <p className="text-xs text-[#555555] leading-relaxed flex-1">
                 calculates your actual hourly rate based on real hours worked vs target billing, showing you exactly where you leave margin on the table.
               </p>
+              <div className="pt-3 border-t border-[#e0e0e0]">
+                <span className="text-[#0a0a0a] text-sm group-hover:translate-x-1 transition-transform inline-block">→</span>
+              </div>
             </div>
 
           </div>
         </div>
       </section>
+
 
       {/* Pricing grid — dark Lateral style */}
       <section id="pricing" className="relative z-10 bg-[#0a0a0a] py-24 flex flex-col items-center">
@@ -549,64 +588,107 @@ export default function LandingPage({ onLaunchApp }: LandingPageProps) {
         </div>
       </section>
 
-      {/* FAQ Accordions */}
-      <section id="faq" className="relative z-10 border-t border-[#e0e0e0] bg-white py-20 flex flex-col items-center text-center">
-        <div className="max-w-3xl mx-auto px-8 w-full">
-          
-          <div className="text-center mb-16">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[#8e8e93] block mb-1">common queries</span>
-            <h2 className="text-3xl font-black tracking-tight text-black">frequently asked questions</h2>
-          </div>
+      {/* FAQ — split layout */}
+      <section id="faq" className="relative z-10 border-t border-[#e0e0e0] bg-white py-24">
+        <div className="max-w-6xl mx-auto px-8 w-full">
 
-          <div className="flex flex-col gap-4">
-            {faqItems.map((item, idx) => {
-              const isOpen = activeFaq === idx;
-              return (
-                <div 
-                  key={idx} 
-                  className={`border border-black/5 bg-[#fafafa]/50 p-4 rounded-lg text-left transition-all duration-300 ${
-                    isOpen ? "bg-white border-black/10 shadow-sm" : "hover:border-black/10"
-                  }`}
-                >
-                  <button
-                    onClick={() => toggleFaq(idx)}
-                    className="w-full flex justify-between items-center text-xs font-bold text-black cursor-pointer hover:text-black/80 transition-colors"
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
+
+            {/* Left — heading */}
+            <div className="md:col-span-4 flex flex-col gap-5">
+              <h2 className="text-3xl md:text-4xl font-black tracking-tight text-[#0a0a0a] leading-tight">
+                frequently asked<br />questions
+              </h2>
+              <p className="text-xs text-[#555555] leading-relaxed max-w-xs">
+                got questions? we've got answers. browse our faq, or reach out anytime — we're here to help make your journey smooth sailing.
+              </p>
+              <button
+                onClick={onLaunchApp}
+                className="w-fit px-5 py-2.5 bg-black text-white text-[10px] font-bold uppercase tracking-widest hover:bg-black/85 transition-colors cursor-pointer mt-1"
+              >
+                reach out
+              </button>
+            </div>
+
+            {/* Right — questions */}
+            <div className="md:col-span-8 flex flex-col">
+              {faqItems.map((item, idx) => {
+                const isOpen = activeFaq === idx;
+                return (
+                  <div
+                    key={idx}
+                    className="border-b border-[#e0e0e0] last:border-b-0"
                   >
-                    <span>{item.q}</span>
-                    <span className="w-5 h-5 bg-white border border-black/5 flex items-center justify-center shrink-0 rounded-full">
-                      <i className={`fa-solid ${isOpen ? "fa-minus" : "fa-plus"} text-[8px] text-black`}></i>
-                    </span>
-                  </button>
-                  {isOpen && (
-                    <div className="text-[11px] text-[#555555] leading-relaxed mt-3 pr-8 transition-opacity duration-300 animate-fade-in-up">
-                      {item.a}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+                    <button
+                      onClick={() => toggleFaq(idx)}
+                      className="w-full flex justify-between items-center py-4 text-sm font-semibold text-[#0a0a0a] cursor-pointer hover:text-black/70 transition-colors text-left gap-4"
+                    >
+                      <span>{item.q}</span>
+                      <span className="w-6 h-6 border border-[#e0e0e0] rounded-full flex items-center justify-center shrink-0">
+                        <i className={`fa-solid ${isOpen ? "fa-minus" : "fa-plus"} text-[8px] text-[#0a0a0a]`}></i>
+                      </span>
+                    </button>
+                    {isOpen && (
+                      <div className="text-xs text-[#555555] leading-relaxed pb-4 pr-10 animate-fade-in-up">
+                        {item.a}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
 
+          </div>
         </div>
       </section>
 
-      {/* Full-width call to action footer */}
-      <section className="bg-black text-white py-20 relative z-10 border-t border-white/10 select-none flex flex-col items-center text-center">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.05),transparent_60%)] pointer-events-none"></div>
-        
-        <div className="max-w-3xl mx-auto px-8 text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl font-black tracking-tight text-white mb-5">stop letting client drift leak profit.</h2>
-          <p className="text-xs text-[#8e8e93] max-w-lg mx-auto leading-relaxed mb-10">
+
+      {/* Full-width CTA */}
+      <section className="bg-black text-white py-32 relative z-10 border-t border-white/10 select-none overflow-hidden">
+        {/* Radial glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(255,255,255,0.06),transparent_70%)] pointer-events-none"></div>
+        {/* Grid texture */}
+        <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none"></div>
+        {/* Watermark */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+          <span className="text-[180px] md:text-[280px] font-black tracking-tighter text-white/[0.02] leading-none">seep</span>
+        </div>
+
+        <div className="max-w-3xl mx-auto px-8 text-center relative z-10 flex flex-col items-center">
+          <span className="text-[9px] font-black uppercase tracking-[0.25em] text-white/30 mb-6">ready to recover?</span>
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight text-white mb-5 leading-tight">
+            stop letting client<br />drift leak profit.
+          </h2>
+          <p className="text-sm text-white/40 max-w-md mx-auto leading-relaxed mb-10">
             connect your workspace logs in less than 2 minutes. estimate target billing and claim what you worked.
           </p>
           <button
             onClick={onLaunchApp}
-            className="px-8 py-3.5 bg-white text-black text-xs font-bold uppercase tracking-wider rounded hover:bg-[#f2f2f2] hover:scale-[1.03] transition-all cursor-pointer shadow-lg font-black"
+            className="px-10 py-4 bg-white text-black text-[11px] font-black uppercase tracking-widest rounded-full hover:bg-white/90 hover:scale-[1.03] transition-all cursor-pointer shadow-[0_0_40px_rgba(255,255,255,0.1)]"
           >
             claim your free account
           </button>
+
+          {/* Trust stats */}
+          <div className="flex items-center gap-8 mt-14 text-center">
+            <div className="flex flex-col items-center">
+              <span className="text-2xl font-black text-white">88%</span>
+              <span className="text-[9px] text-white/30 uppercase tracking-widest mt-1">recovery rate</span>
+            </div>
+            <div className="w-px h-8 bg-white/10"></div>
+            <div className="flex flex-col items-center">
+              <span className="text-2xl font-black text-white">&lt;2 min</span>
+              <span className="text-[9px] text-white/30 uppercase tracking-widest mt-1">setup time</span>
+            </div>
+            <div className="w-px h-8 bg-white/10"></div>
+            <div className="flex flex-col items-center">
+              <span className="text-2xl font-black text-white">$0</span>
+              <span className="text-[9px] text-white/30 uppercase tracking-widest mt-1">to start</span>
+            </div>
+          </div>
         </div>
       </section>
+
 
       {/* Premium Footer like ShipLog layout */}
       <footer className="bg-[#fafafa] border-t border-[#e0e0e0] pt-16 pb-6 relative z-10 select-none text-lowercase">
