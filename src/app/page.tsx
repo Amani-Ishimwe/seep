@@ -58,36 +58,7 @@ export default function Page() {
     setShowAddClientModal(false);
   };
 
-  // Skeleton Loader (Pulsing panels)
-  if (isLoading) {
-    return (
-      <div className="flex w-full h-screen bg-[#fafafa] overflow-hidden select-none text-lowercase">
-        {/* Skeleton Sidebar */}
-        <div className="w-[240px] h-full bg-[#ffffff] border-r border-[#e0e0e0] p-6 flex flex-col justify-between shrink-0">
-          <div>
-            <div className="w-20 h-6 bg-[#e8e8e8] animate-pulse rounded mb-12"></div>
-            <div className="flex flex-col gap-4">
-              <div className="w-full h-9 bg-[#e8e8e8] animate-pulse rounded"></div>
-              <div className="w-full h-9 bg-[#e8e8e8] animate-pulse rounded"></div>
-              <div className="w-full h-9 bg-[#e8e8e8] animate-pulse rounded"></div>
-            </div>
-          </div>
-          <div className="w-full h-24 bg-[#e8e8e8] animate-pulse rounded-lg"></div>
-        </div>
-        {/* Skeleton Content */}
-        <div className="flex-1 p-16 flex flex-col gap-12">
-          <div className="flex flex-col gap-4">
-            <div className="w-32 h-3 bg-[#e8e8e8] animate-pulse rounded"></div>
-            <div className="w-80 h-20 bg-[#e8e8e8] animate-pulse rounded"></div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="h-[220px] bg-[#e8e8e8] animate-pulse rounded-lg"></div>
-            <div className="h-[220px] bg-[#e8e8e8] animate-pulse rounded-lg"></div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+
 
   if (showLanding) {
     return <LandingPage onLaunchApp={() => setShowLanding(false)} />;

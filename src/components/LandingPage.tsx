@@ -8,6 +8,7 @@ interface LandingPageProps {
 
 export default function LandingPage({ onLaunchApp }: LandingPageProps) {
   const [scrolled, setScrolled] = useState(false);
+  const [billingYearly, setBillingYearly] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -65,13 +66,9 @@ export default function LandingPage({ onLaunchApp }: LandingPageProps) {
         <div className="absolute w-[500px] h-[500px] rounded-[40%_60%_50%_50%] bottom-[10%] left-[-10%] bg-radial from-[#f2f2f2]/70 to-transparent opacity-40 border border-[#e0e0e0]/20 animate-float-slower"></div>
       </div>
 
-      {/* ── Sticky navbar ── transparent over hero, solid dark after scroll */}
+      {/* ── Sticky navbar ── always glassmorphic */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 h-[60px] px-8 flex items-center justify-between select-none transition-all duration-300 ${
-          scrolled
-            ? "bg-black/95 backdrop-blur-md border-b border-white/10 shadow-lg"
-            : "bg-transparent"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 h-[60px] px-8 flex items-center justify-between select-none transition-all duration-300 bg-black/40 backdrop-blur-md border-b border-white/10"
       >
         {/* Logo */}
         <div className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity shrink-0">
@@ -378,15 +375,20 @@ export default function LandingPage({ onLaunchApp }: LandingPageProps) {
 
           {/* Toggle */}
           <div className="flex items-center justify-center gap-4 mb-14">
-            <span className="text-[11px] font-semibold text-white/70">monthly</span>
+            <span className={`text-[11px] font-semibold transition-colors ${!billingYearly ? "text-white" : "text-white/40"}`}>monthly</span>
             <button
+              onClick={() => setBillingYearly(!billingYearly)}
               className="relative w-10 h-5 bg-white/20 rounded-full transition-all cursor-pointer"
               aria-label="toggle billing period"
             >
-              <span className="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform"></span>
+              <span
+                className={`absolute top-0.5 w-4 h-4 bg-white rounded-full shadow transition-all duration-300 ${
+                  billingYearly ? "left-5" : "left-0.5"
+                }`}
+              ></span>
             </button>
-            <span className="text-[11px] font-semibold text-white/70">yearly</span>
-            <span className="px-2 py-0.5 bg-white/10 border border-white/15 text-white text-[9px] font-bold uppercase tracking-wider">save 20%</span>
+            <span className={`text-[11px] font-semibold transition-colors ${billingYearly ? "text-white" : "text-white/40"}`}>yearly</span>
+            <span className="px-2 py-0.5 bg-green-500/15 border border-green-500/30 text-green-400 text-[9px] font-bold uppercase tracking-wider">save 20%</span>
           </div>
 
           {/* Cards */}
@@ -433,8 +435,11 @@ export default function LandingPage({ onLaunchApp }: LandingPageProps) {
                 <p className="text-xs text-white/40 leading-relaxed">for independent builders scaling multiple clients.</p>
               </div>
               <div className="border-t border-white/8 pt-5">
-                <span className="text-5xl font-black text-white">$29</span>
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-white/30 mt-1">per month</p>
+                <div className="flex items-end gap-2">
+                  <span className="text-5xl font-black text-white">{billingYearly ? "$23" : "$29"}</span>
+                  {billingYearly && <span className="text-white/30 text-sm line-through mb-1">$29</span>}
+                </div>
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-white/30 mt-1">per month{billingYearly ? ", billed yearly" : ""}</p>
               </div>
               <div className="flex flex-col gap-4 flex-1">
                 <div>
@@ -464,8 +469,11 @@ export default function LandingPage({ onLaunchApp }: LandingPageProps) {
                 <p className="text-xs text-white/40 leading-relaxed">for studios and firms with complex client portfolios.</p>
               </div>
               <div className="border-t border-white/8 pt-5">
-                <span className="text-5xl font-black text-white">$89</span>
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-white/30 mt-1">per month</p>
+                <div className="flex items-end gap-2">
+                  <span className="text-5xl font-black text-white">{billingYearly ? "$71" : "$89"}</span>
+                  {billingYearly && <span className="text-white/30 text-sm line-through mb-1">$89</span>}
+                </div>
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-white/30 mt-1">per month{billingYearly ? ", billed yearly" : ""}</p>
               </div>
               <div className="flex flex-col gap-4 flex-1">
                 <div>
