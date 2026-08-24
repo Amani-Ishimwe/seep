@@ -150,16 +150,20 @@ export default function LandingPage({ onLaunchApp }: LandingPageProps) {
         </div>
 
         {/* Bottom logo ticker */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/10 bg-black/40 backdrop-blur-sm py-5 px-8">
-          <div className="flex items-center gap-3 mb-2">
-            <span className="text-[9px] font-bold uppercase tracking-widest text-white/30">trusted by teams at</span>
-          </div>
-          <div className="flex items-center gap-10 overflow-hidden">
-            {["Meridian Studio", "Northline", "Gantry Co.", "53 Capital", "Westbridge", "Lattice Labs", "Arc Media"].map((name) => (
-              <span key={name} className="text-white/40 text-[11px] font-bold tracking-widest uppercase whitespace-nowrap hover:text-white/70 transition-colors cursor-default">{name}</span>
-            ))}
+        <div className="absolute bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black/60 to-black/20 backdrop-blur-sm py-6 px-8">
+          <div className="max-w-5xl mx-auto flex flex-col items-center gap-4">
+            <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-white/25">trusted by teams at</span>
+            <div className="flex items-center gap-6 md:gap-10 flex-wrap justify-center">
+              {["Meridian Studio", "Northline", "Gantry Co.", "53 Capital", "Westbridge", "Lattice Labs", "Arc Media"].map((name, i, arr) => (
+                <span key={name} className="flex items-center gap-6 md:gap-10">
+                  <span className="text-white/50 text-xs font-bold tracking-[0.15em] uppercase whitespace-nowrap hover:text-white transition-colors cursor-default">{name}</span>
+                  {i < arr.length - 1 && <span className="text-white/15 text-[6px]">●</span>}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
+
       </section>
 
 
@@ -690,74 +694,99 @@ export default function LandingPage({ onLaunchApp }: LandingPageProps) {
       </section>
 
 
-      {/* Premium Footer like ShipLog layout */}
-      <footer className="bg-[#fafafa] border-t border-[#e0e0e0] pt-16 pb-6 relative z-10 select-none text-lowercase">
-        <div className="max-w-5xl mx-auto px-8 w-full">
-          
-          {/* Main columns grid */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
-            
-            {/* Left: Branding & Subtitle */}
-            <div className="md:col-span-6 flex flex-col gap-3 text-left">
-              <div 
+      {/* Footer */}
+      <footer className="bg-[#0a0a0a] pt-20 pb-0 relative z-10 select-none overflow-hidden">
+        <div className="max-w-6xl mx-auto px-8 w-full relative z-10">
+
+          {/* Main columns */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-16">
+
+            {/* Branding */}
+            <div className="md:col-span-5 flex flex-col gap-4 text-left">
+              <div
                 onClick={onLaunchApp}
-                className="flex items-center gap-2 text-[#0a0a0a] cursor-pointer hover:opacity-85 transition-opacity py-0.5"
+                className="flex items-center gap-2.5 cursor-pointer hover:opacity-80 transition-opacity"
               >
-                <div className="w-6.5 h-6.5 bg-black flex items-center justify-center text-white shrink-0">
-                  <i className="fa-solid fa-droplet text-[11px] text-white"></i>
+                <div className="w-7 h-7 bg-white flex items-center justify-center shrink-0">
+                  <i className="fa-solid fa-droplet text-[10px] text-black"></i>
                 </div>
-                <span className="font-black text-lg tracking-tighter">seep</span>
+                <span className="font-black text-lg tracking-tighter text-white">seep</span>
               </div>
-              <p className="text-xs text-[#555555] leading-relaxed max-w-sm">
+              <p className="text-xs text-white/40 leading-relaxed max-w-sm">
                 automatically detect unbilled client hours, meetings, and revision drift in real time — without manual time tracking.
               </p>
-            </div>
-
-            {/* Middle: Product links */}
-            <div className="md:col-span-3 flex flex-col gap-3 text-left">
-              <span className="text-[9px] font-bold uppercase tracking-widest text-[#8e8e93] block">product</span>
-              <div className="flex flex-col gap-2 text-xs font-semibold text-[#555555]">
-                <a href="#how-it-works" className="hover:text-black transition-colors">how it works</a>
-                <a href="#calculator" className="hover:text-black transition-colors">leak calculator</a>
-                <a href="#features" className="hover:text-black transition-colors">features</a>
-                <a href="#pricing" className="hover:text-black transition-colors">pricing</a>
-                <a href="#faq" className="hover:text-black transition-colors">faq</a>
+              {/* Social icons */}
+              <div className="flex items-center gap-3 mt-2">
+                <a href="#" className="w-8 h-8 border border-white/10 flex items-center justify-center hover:border-white/30 hover:bg-white/5 transition-all">
+                  <i className="fa-brands fa-x-twitter text-white/40 text-[11px]"></i>
+                </a>
+                <a href="#" className="w-8 h-8 border border-white/10 flex items-center justify-center hover:border-white/30 hover:bg-white/5 transition-all">
+                  <i className="fa-brands fa-linkedin-in text-white/40 text-[11px]"></i>
+                </a>
+                <a href="#" className="w-8 h-8 border border-white/10 flex items-center justify-center hover:border-white/30 hover:bg-white/5 transition-all">
+                  <i className="fa-brands fa-github text-white/40 text-[11px]"></i>
+                </a>
               </div>
             </div>
 
-            {/* Right: Get Started */}
+            {/* Product */}
+            <div className="md:col-span-2 flex flex-col gap-3 text-left">
+              <span className="text-[9px] font-bold uppercase tracking-widest text-white/25 block">product</span>
+              <div className="flex flex-col gap-2.5 text-xs text-white/50">
+                <a href="#how-it-works" className="hover:text-white transition-colors">how it works</a>
+                <a href="#calculator" className="hover:text-white transition-colors">leak calculator</a>
+                <a href="#features" className="hover:text-white transition-colors">features</a>
+                <a href="#pricing" className="hover:text-white transition-colors">pricing</a>
+                <a href="#faq" className="hover:text-white transition-colors">faq</a>
+              </div>
+            </div>
+
+            {/* Company */}
+            <div className="md:col-span-2 flex flex-col gap-3 text-left">
+              <span className="text-[9px] font-bold uppercase tracking-widest text-white/25 block">company</span>
+              <div className="flex flex-col gap-2.5 text-xs text-white/50">
+                <a href="#" className="hover:text-white transition-colors">about</a>
+                <a href="#" className="hover:text-white transition-colors">blog</a>
+                <a href="#" className="hover:text-white transition-colors">careers</a>
+                <a href="#" className="hover:text-white transition-colors">contact</a>
+              </div>
+            </div>
+
+            {/* Get started */}
             <div className="md:col-span-3 flex flex-col gap-3 text-left">
-              <span className="text-[9px] font-bold uppercase tracking-widest text-[#8e8e93] block">get started</span>
-              <div className="flex flex-col gap-2 text-xs font-semibold text-[#555555]">
-                <button onClick={onLaunchApp} className="hover:text-black transition-colors text-left cursor-pointer">sign in</button>
-                <button onClick={onLaunchApp} className="hover:text-black transition-colors text-left cursor-pointer">create account</button>
-                <button onClick={onLaunchApp} className="hover:text-black transition-colors text-left cursor-pointer">recover leakage</button>
+              <span className="text-[9px] font-bold uppercase tracking-widest text-white/25 block">get started</span>
+              <div className="flex flex-col gap-2.5 text-xs text-white/50">
+                <button onClick={onLaunchApp} className="hover:text-white transition-colors text-left cursor-pointer">sign in</button>
+                <button onClick={onLaunchApp} className="hover:text-white transition-colors text-left cursor-pointer">create account</button>
+                <button onClick={onLaunchApp} className="hover:text-white transition-colors text-left cursor-pointer">recover leakage</button>
               </div>
             </div>
 
           </div>
 
-          {/* Separator line */}
-          <div className="border-t border-black/5 w-full mb-6"></div>
+          {/* Separator */}
+          <div className="border-t border-white/8 w-full mb-6"></div>
 
-          {/* Bottom Row */}
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] text-[#8e8e93] mb-6">
-            <span>© 2026 seep inc.</span>
+          {/* Legal row */}
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] text-white/25 mb-8">
+            <span>© 2026 seep inc. all rights reserved.</span>
             <div className="flex gap-6">
-              <a href="#how-it-works" className="hover:text-black transition-colors">terms of service</a>
-              <a href="#how-it-works" className="hover:text-black transition-colors">privacy policy</a>
+              <a href="#" className="hover:text-white/60 transition-colors">terms of service</a>
+              <a href="#" className="hover:text-white/60 transition-colors">privacy policy</a>
+              <a href="#" className="hover:text-white/60 transition-colors">cookie policy</a>
             </div>
-          </div>
-
-          {/* Giant watermark branding typography cropped at bottom */}
-          <div className="text-center overflow-hidden h-[60px] md:h-[110px] select-none pointer-events-none mt-4 relative">
-            <span className="text-[75px] md:text-[145px] font-black tracking-tighter text-black/[0.04] absolute bottom-[-20%] left-0 right-0 font-sans leading-none select-none">
-              seep
-            </span>
           </div>
 
         </div>
+
+        {/* Giant seep watermark — flush to bottom */}
+        <div className="relative w-full flex justify-center overflow-hidden h-[70px] md:h-[130px] pointer-events-none select-none">
+          <span className="text-[100px] md:text-[200px] font-black tracking-[-0.05em] text-white/[0.04] leading-none absolute bottom-[-35%] whitespace-nowrap">
+            seep
+          </span>
+        </div>
       </footer>
+
 
     </div>
   );
