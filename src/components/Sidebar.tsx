@@ -64,8 +64,8 @@ export default function Sidebar({
   ];
 
   return (
-    <aside className="w-[240px] h-full bg-[#ffffff]/90 backdrop-blur-md border-r border-[#e0e0e0] p-4 flex flex-col justify-between z-10 shrink-0 select-none text-lowercase">
-      <div className="flex flex-col gap-5">
+    <aside className="w-[240px] h-full bg-[#fafafa] border-r border-[#e0e0e0] px-3 py-4 flex flex-col justify-between z-10 shrink-0 select-none">
+      <div className="flex flex-col gap-4">
         
         {/* Brand Logomark */}
         <div 
@@ -73,29 +73,27 @@ export default function Sidebar({
             setActiveClientId(null);
             setActiveSection("overview");
           }}
-          className="flex items-center gap-2.5 text-[#0a0a0a] cursor-pointer hover:opacity-85 transition-opacity py-2 relative"
+          className="flex items-center gap-2.5 text-[#0a0a0a] cursor-pointer hover:opacity-80 transition-opacity px-2 py-1"
         >
-          <div className="w-6.5 h-6.5 bg-black flex items-center justify-center text-white shrink-0">
-            <i className="fa-solid fa-droplet text-[11px] text-white"></i>
+          <div className="w-7 h-7 bg-black rounded-md flex items-center justify-center text-white shrink-0">
+            <i className="fa-solid fa-droplet text-[10px] text-white"></i>
           </div>
-          <span className="font-black text-xl tracking-tighter font-sans select-none">seep</span>
-          <span className="text-[8px] font-mono text-black/40 border border-black/10 px-1 py-0.2 select-none self-start mt-0.5 ml-1">v1.0</span>
+          <span className="font-black text-lg tracking-tighter font-sans select-none">seep</span>
+          <span className="text-[7px] font-mono text-[#8e8e93] border border-[#e0e0e0] px-1.5 py-0.5 rounded select-none ml-auto">v1.0</span>
         </div>
 
         {/* User Account Details */}
-        <div className="flex items-center justify-between border-y border-black/5 py-3">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-black text-white flex items-center justify-center font-bold text-xs">
-              {userProfile.name.slice(0, 2)}
-            </div>
-            <div className="flex flex-col text-left">
-              <span className="text-[11px] font-bold text-black tracking-tight">{userProfile.name}</span>
-              <span className="text-[9px] text-[#8e8e93] font-medium tracking-tight">target: ${userProfile.billingRate}/hr</span>
-            </div>
+        <div className="flex items-center gap-3 bg-white border border-[#e0e0e0] rounded-lg px-3 py-2.5 mx-0.5">
+          <div className="w-8 h-8 bg-[#0a0a0a] text-white rounded-lg flex items-center justify-center font-bold text-[10px] uppercase shrink-0">
+            {userProfile.name.slice(0, 2)}
           </div>
-          <span className={`inline-flex items-center gap-1 px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider rounded ${
+          <div className="flex flex-col text-left flex-1 min-w-0">
+            <span className="text-[11px] font-bold text-[#0a0a0a] tracking-tight truncate">{userProfile.name}</span>
+            <span className="text-[9px] text-[#8e8e93] font-medium">${userProfile.billingRate}/hr</span>
+          </div>
+          <span className={`inline-flex items-center px-2 py-0.5 text-[8px] font-bold uppercase tracking-wider rounded-full shrink-0 ${
             userProfile.tier === "pro" 
-              ? "bg-black text-white" 
+              ? "bg-[#0a0a0a] text-white" 
               : "bg-[#f2f2f2] text-[#8e8e93]"
           }`}>
             {userProfile.tier}
@@ -103,7 +101,8 @@ export default function Sidebar({
         </div>
 
         {/* Primary Navigation Menu */}
-        <nav className="flex flex-col gap-0.5">
+        <nav className="flex flex-col gap-0.5 px-0.5">
+          <span className="text-[8px] font-bold uppercase tracking-[0.15em] text-[#8e8e93] px-2.5 mb-1">menu</span>
           {primaryMenuItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
@@ -113,19 +112,16 @@ export default function Sidebar({
                   setActiveClientId(null);
                   setActiveSection(item.id);
                 }}
-                className={`group relative flex items-center gap-3 px-3 py-2.5 text-xs font-bold tracking-wide transition-all text-left ${
+                className={`group flex items-center gap-3 px-2.5 py-2 text-xs font-semibold tracking-tight transition-all text-left rounded-lg ${
                   isActive 
-                    ? "text-black bg-black/[0.03]" 
-                    : "text-[#8e8e93] hover:text-[#0a0a0a] hover:bg-black/[0.01]"
+                    ? "text-[#0a0a0a] bg-white border border-[#e0e0e0] shadow-sm" 
+                    : "text-[#8e8e93] hover:text-[#0a0a0a] hover:bg-white/60"
                 }`}
               >
-                {isActive && (
-                  <span className="absolute left-0 top-0 bottom-0 w-[3px] bg-black"></span>
-                )}
-                <i className={`${item.iconClass} text-[15px] transition-transform duration-200 group-hover:scale-105 ${
-                  isActive ? "text-black" : "text-[#8e8e93] group-hover:text-black"
+                <i className={`${item.iconClass} text-[13px] w-4 text-center transition-colors ${
+                  isActive ? "text-[#0a0a0a]" : "text-[#8e8e93] group-hover:text-[#0a0a0a]"
                 }`} />
-                <span className="tracking-tight">{item.label}</span>
+                <span>{item.label}</span>
               </button>
             );
           })}
@@ -133,10 +129,11 @@ export default function Sidebar({
       </div>
 
       {/* Secondary Navigation Menu & Upsell Card at bottom */}
-      <div className="flex flex-col gap-4 mt-auto">
+      <div className="flex flex-col gap-3 mt-auto">
         
         {/* Secondary Navigation */}
-        <nav className="flex flex-col gap-0.5 pt-3 border-t border-black/5">
+        <nav className="flex flex-col gap-0.5 px-0.5">
+          <span className="text-[8px] font-bold uppercase tracking-[0.15em] text-[#8e8e93] px-2.5 mb-1">system</span>
           {secondaryMenuItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
@@ -146,19 +143,16 @@ export default function Sidebar({
                   setActiveClientId(null);
                   setActiveSection(item.id);
                 }}
-                className={`group relative flex items-center gap-3 px-3 py-2 text-[11px] font-bold tracking-wide transition-all text-left ${
+                className={`group flex items-center gap-3 px-2.5 py-2 text-[11px] font-semibold tracking-tight transition-all text-left rounded-lg ${
                   isActive 
-                    ? "text-black bg-black/[0.03]" 
-                    : "text-[#8e8e93] hover:text-[#0a0a0a] hover:bg-black/[0.01]"
+                    ? "text-[#0a0a0a] bg-white border border-[#e0e0e0] shadow-sm" 
+                    : "text-[#8e8e93] hover:text-[#0a0a0a] hover:bg-white/60"
                 }`}
               >
-                {isActive && (
-                  <span className="absolute left-0 top-0 bottom-0 w-[3px] bg-black"></span>
-                )}
-                <i className={`${item.iconClass} text-[13px] transition-transform duration-200 group-hover:scale-105 ${
-                  isActive ? "text-black" : "text-[#8e8e93] group-hover:text-black"
+                <i className={`${item.iconClass} text-[12px] w-4 text-center transition-colors ${
+                  isActive ? "text-[#0a0a0a]" : "text-[#8e8e93] group-hover:text-[#0a0a0a]"
                 }`} />
-                <span className="tracking-tight">{item.label}</span>
+                <span>{item.label}</span>
               </button>
             );
           })}
@@ -166,16 +160,17 @@ export default function Sidebar({
 
         {/* Upgrade Pro Upsell Card (Only show if tier is free) */}
         {userProfile.tier === "free" && (
-          <div className="bg-[#0a0a0a] p-4 text-left shadow-sm relative overflow-hidden border border-white/5 mt-2">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.06),transparent_60%)] pointer-events-none"></div>
+          <div className="bg-[#0a0a0a] rounded-lg p-4 text-left relative overflow-hidden mx-0.5">
+            <div className="absolute inset-0 shimmer-border pointer-events-none"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.05),transparent_60%)] pointer-events-none"></div>
             <div className="relative z-10">
-              <span className="text-[8px] font-bold uppercase tracking-widest text-[#8e8e93] block mb-1">upgrade options</span>
-              <p className="text-[10px] text-[#e0e0e0] leading-relaxed mb-3 font-sans">
-                sync limit is active. unlock pro to sync unlimited tracker daemons.
+              <span className="text-[8px] font-bold uppercase tracking-widest text-white/40 block mb-1.5">go pro</span>
+              <p className="text-[10px] text-white/60 leading-relaxed mb-3">
+                unlock unlimited syncs, team dashboards, and advanced leak detection.
               </p>
               <button 
                 onClick={() => setActiveSection("billing")}
-                className="w-full py-2 bg-white text-black text-[9px] font-black uppercase tracking-wider hover:bg-[#f2f2f2] transition-colors"
+                className="w-full py-2 bg-white text-[#0a0a0a] text-[9px] font-black uppercase tracking-wider rounded-md hover:bg-white/90 transition-colors cursor-pointer"
               >
                 upgrade to pro
               </button>

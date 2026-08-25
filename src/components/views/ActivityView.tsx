@@ -63,8 +63,8 @@ export default function ActivityView() {
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <div className="text-left">
-          <span className="text-[10px] font-bold uppercase tracking-widest text-[#8e8e93] block mb-1">signal activity logs</span>
-          <h1 className="text-3xl font-black tracking-tight text-[#0a0a0a]">synced active feeds</h1>
+          <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#8e8e93] block mb-1">signal activity logs</span>
+          <h1 className="text-2xl font-black tracking-tight text-[#0a0a0a]">synced active feeds</h1>
         </div>
         
         <div className="flex gap-3">
@@ -80,7 +80,7 @@ export default function ActivityView() {
           </select>
           <button
             onClick={() => setShowAddActivityForm(!showAddActivityForm)}
-            className="px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-wider rounded hover:bg-black/85 transition-colors"
+            className="px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-black/85 transition-colors"
           >
             {showAddActivityForm ? "cancel" : "add activity"}
           </button>
@@ -89,7 +89,7 @@ export default function ActivityView() {
 
       {/* Manual Activity Input Form */}
       {showAddActivityForm && (
-        <form onSubmit={handleManualActivitySubmit} className="glass-panel p-6 rounded-lg text-left mb-8 flex flex-col gap-4">
+        <form onSubmit={handleManualActivitySubmit} className="card rounded-xl p-6 rounded-lg text-left mb-8 flex flex-col gap-4">
           <h3 className="text-xs font-bold uppercase tracking-wider text-black">log manual billable activity</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
@@ -140,7 +140,7 @@ export default function ActivityView() {
       )}
 
       {/* Timeline entries list */}
-      <div className="glass-panel rounded-lg p-6">
+      <div className="card rounded-xl p-6">
         <div className="flex flex-col gap-4">
           {filteredEvents.length === 0 ? (
             <div className="text-center py-10 text-xs text-[#8e8e93]">
@@ -153,7 +153,7 @@ export default function ActivityView() {
               const value = evt.duration * rate;
 
               return (
-                <div key={evt.id} className="flex justify-between items-center p-4 border border-black/5 rounded-lg bg-white/40 hover:bg-white transition-colors">
+                <div key={evt.id} className="flex justify-between items-center p-4 border border-[#e0e0e0] rounded-lg bg-white/40 hover:bg-white transition-colors">
                   <div className="text-left flex items-center gap-4">
                     <div className="p-2.5 bg-[#f2f2f2] rounded-md text-black shrink-0">
                       {evt.title.includes("kickoff") || evt.title.includes("meeting") || evt.title.includes("sync") ? (

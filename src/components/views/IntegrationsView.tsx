@@ -11,13 +11,13 @@ export default function IntegrationsView() {
       
       {/* Header */}
       <div className="mb-8">
-        <span className="text-[10px] font-bold uppercase tracking-widest text-[#8e8e93] block mb-1">connected apps</span>
-        <h1 className="text-3xl font-black tracking-tight text-[#0a0a0a]">active integration syncs</h1>
+        <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#8e8e93] block mb-1">connected apps</span>
+        <h1 className="text-2xl font-black tracking-tight text-[#0a0a0a]">active integration syncs</h1>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Google Calendar Card */}
-        <div className="glass-panel p-6 rounded-lg flex flex-col justify-between min-h-[180px]">
+        <div className="card rounded-xl p-6 rounded-lg flex flex-col justify-between min-h-[180px]">
           <div>
             <div className="flex justify-between items-start mb-4">
               <svg className="w-8 h-8 shrink-0" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -46,7 +46,7 @@ export default function IntegrationsView() {
             ) : (
               <button
                 onClick={connectCalendar}
-                className="px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-wider rounded hover:bg-black/85 transition-colors"
+                className="px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-black/85 transition-colors"
               >
                 connect calendar
               </button>
@@ -55,7 +55,7 @@ export default function IntegrationsView() {
         </div>
 
         {/* Slack Card (coming soon) */}
-        <div className="glass-panel p-6 rounded-lg opacity-70 flex flex-col justify-between min-h-[180px]">
+        <div className="card rounded-xl p-6 rounded-lg opacity-70 flex flex-col justify-between min-h-[180px]">
           <div>
             <div className="flex justify-between items-start mb-4">
               <svg className="w-8 h-8 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -87,7 +87,7 @@ export default function IntegrationsView() {
         </div>
 
         {/* Email Card (coming soon) */}
-        <div className="glass-panel p-6 rounded-lg opacity-70 flex flex-col justify-between min-h-[180px]">
+        <div className="card rounded-xl p-6 rounded-lg opacity-70 flex flex-col justify-between min-h-[180px]">
           <div>
             <div className="flex justify-between items-start mb-4">
               <svg className="w-8 h-8 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

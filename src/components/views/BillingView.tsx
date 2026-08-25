@@ -16,13 +16,13 @@ export default function BillingView() {
       
       {/* Header */}
       <div className="mb-8">
-        <span className="text-[10px] font-bold uppercase tracking-widest text-[#8e8e93] block mb-1">subscription plans</span>
-        <h1 className="text-3xl font-black tracking-tight text-[#0a0a0a]">seep billing center</h1>
+        <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#8e8e93] block mb-1">subscription plans</span>
+        <h1 className="text-2xl font-black tracking-tight text-[#0a0a0a]">seep billing center</h1>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
         {/* Free Plan */}
-        <div className={`glass-panel p-8 rounded-lg flex flex-col justify-between ${userProfile.tier === "free" ? "border-black" : ""}`}>
+        <div className={`card rounded-xl p-8 rounded-lg flex flex-col justify-between ${userProfile.tier === "free" ? "border-black" : ""}`}>
           <div>
             <div className="flex justify-between items-start mb-6">
               <div>
@@ -66,7 +66,7 @@ export default function BillingView() {
         </div>
 
         {/* Pro Plan */}
-        <div className={`glass-panel p-8 rounded-lg flex flex-col justify-between relative overflow-hidden ${userProfile.tier === "pro" ? "border-black" : ""}`}>
+        <div className={`card rounded-xl p-8 rounded-lg flex flex-col justify-between relative overflow-hidden ${userProfile.tier === "pro" ? "border-black" : ""}`}>
           {/* Badge */}
           <div className="absolute top-0 right-0 bg-[#0a0a0a] text-white text-[9px] font-bold uppercase tracking-widest px-4 py-1 rounded-bl">
             recommended

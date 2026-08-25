@@ -37,14 +37,14 @@ export default function SettingsView() {
       
       {/* Header */}
       <div className="mb-8">
-        <span className="text-[10px] font-bold uppercase tracking-widest text-[#8e8e93] block mb-1">preferences</span>
-        <h1 className="text-3xl font-black tracking-tight text-[#0a0a0a]">account settings</h1>
+        <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#8e8e93] block mb-1">preferences</span>
+        <h1 className="text-2xl font-black tracking-tight text-[#0a0a0a]">account settings</h1>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 items-start">
         
         {/* Left Form: Profile settings */}
-        <form onSubmit={handleProfileSave} className="glass-panel p-6 rounded-lg flex flex-col gap-6 w-full">
+        <form onSubmit={handleProfileSave} className="card rounded-xl p-6 rounded-lg flex flex-col gap-6 w-full">
           <h3 className="text-xs font-bold uppercase tracking-wider text-black">freelancer billing profile</h3>
           
           <div className="grid grid-cols-2 gap-4">
@@ -132,7 +132,7 @@ export default function SettingsView() {
 
         {/* Right Columns: Operations (simulated errors / wipe DB) */}
         <div className="flex flex-col gap-6 w-full">
-          <div className="glass-panel p-5 rounded-lg text-left flex flex-col gap-4">
+          <div className="card rounded-xl p-5 rounded-lg text-left flex flex-col gap-4">
             <h3 className="text-xs font-bold uppercase tracking-wider text-black flex items-center gap-2">
               <i className="fa-solid fa-gear text-[18px]"></i>
               developer diagnostics
@@ -155,7 +155,7 @@ export default function SettingsView() {
                 </p>
               </div>
 
-              <div className="border-t border-black/5 pt-4">
+              <div className="border-t border-[#e0e0e0] pt-4">
                 <button
                   type="button"
                   onClick={resetApp}

@@ -81,8 +81,8 @@ export default function ReportsView() {
       
       {/* Header */}
       <div className="text-left mb-8">
-        <span className="text-[10px] font-bold uppercase tracking-widest text-[#8e8e93] block mb-1">decision analytics</span>
-        <h1 className="text-3xl font-black tracking-tight text-[#0a0a0a]">reconciliation reports</h1>
+        <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#8e8e93] block mb-1">decision analytics</span>
+        <h1 className="text-2xl font-black tracking-tight text-[#0a0a0a]">reconciliation reports</h1>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
@@ -91,10 +91,10 @@ export default function ReportsView() {
         <div className="md:col-span-8 flex flex-col gap-8">
           
           {/* Weekly Leak Summary Card */}
-          <div className="glass-panel p-6 rounded-lg text-left">
+          <div className="card rounded-xl p-6 rounded-lg text-left">
             <h3 className="text-xs font-bold uppercase tracking-wider text-[#555555] mb-6">weekly leak report</h3>
             
-            <div className="grid grid-cols-3 gap-6 border-b border-black/5 pb-6">
+            <div className="grid grid-cols-3 gap-6 border-b border-[#e0e0e0] pb-6">
               <div>
                 <span className="text-[9px] uppercase tracking-wider font-bold text-[#8e8e93] block">potentially unbilled</span>
                 <span className="text-2xl font-black text-black">{formatCurrency(totalLeak)}</span>
@@ -116,7 +116,7 @@ export default function ReportsView() {
           </div>
 
           {/* Effective Hourly Rate comparison */}
-          <div className="glass-panel p-6 rounded-lg text-left">
+          <div className="card rounded-xl p-6 rounded-lg text-left">
             <div className="flex justify-between items-start mb-6">
               <div>
                 <h3 className="text-xs font-bold uppercase tracking-wider text-[#555555]">effective hourly rate</h3>
@@ -130,11 +130,11 @@ export default function ReportsView() {
             <div className="flex items-end gap-12 py-4">
               <div>
                 <span className="text-[9px] uppercase tracking-wider font-bold text-[#8e8e93] block">target rate</span>
-                <span className="text-3xl font-black text-black">${targetRate}/hr</span>
+                <span className="text-2xl font-black text-black">${targetRate}/hr</span>
               </div>
               <div>
                 <span className="text-[9px] uppercase tracking-wider font-bold text-[#8e8e93] block">actual effective rate</span>
-                <span className="text-3xl font-black text-[#a94442]">${Math.round(actualRate)}/hr</span>
+                <span className="text-2xl font-black text-[#a94442]">${Math.round(actualRate)}/hr</span>
               </div>
             </div>
 
@@ -145,7 +145,7 @@ export default function ReportsView() {
           </div>
 
           {/* Biggest Causes breakdown */}
-          <div className="glass-panel p-6 rounded-lg text-left">
+          <div className="card rounded-xl p-6 rounded-lg text-left">
             <h3 className="text-xs font-bold uppercase tracking-wider text-[#555555] mb-6">leakage sources breakdown</h3>
             
             <div className="flex flex-col gap-4">
@@ -199,12 +199,12 @@ export default function ReportsView() {
         <div className="md:col-span-4 flex flex-col gap-6">
           <h3 className="text-xs font-bold uppercase tracking-wider text-[#555555] text-left">top leaking clients</h3>
           
-          <div className="glass-panel p-5 rounded-lg text-left flex flex-col gap-4">
+          <div className="card rounded-xl p-5 rounded-lg text-left flex flex-col gap-4">
             {rankedLeaks.length === 0 ? (
               <span className="text-xs text-[#8e8e93] py-4 text-center">no data logged yet.</span>
             ) : (
               rankedLeaks.map((leak, idx) => (
-                <div key={idx} className="flex justify-between items-center py-2 border-b border-black/5 last:border-0">
+                <div key={idx} className="flex justify-between items-center py-2 border-b border-[#e0e0e0] last:border-0">
                   <div className="flex items-center gap-3">
                     <span className="text-xs font-bold text-[#8e8e93]">{idx + 1}.</span>
                     <div>

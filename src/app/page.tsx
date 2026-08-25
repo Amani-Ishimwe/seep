@@ -75,11 +75,9 @@ export default function Page() {
 
   return (
     <div className="flex w-full h-screen overflow-hidden bg-[#fafafa] font-sans relative text-lowercase">
-      {/* Ambient background grids */}
+      {/* Subtle ambient texture */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute w-[80px] h-[80px] bg-transparent opacity-8 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:20px_20px] inset-0"></div>
-        <div className="absolute w-[300px] h-[300px] rounded-full top-[15%] right-[10%] bg-radial from-[#e8e8e8]/40 to-transparent opacity-25 border border-[#e0e0e0]/30 animate-float-slow"></div>
-        <div className="absolute w-[450px] h-[450px] rounded-[38%_62%_63%_37%_/_41%_44%_56%_59%] bottom-[10%] left-[5%] bg-radial from-[#f2f2f2]/60 to-transparent opacity-25 border border-[#e0e0e0]/30 animate-float-slower"></div>
+        <div className="absolute inset-0 opacity-[0.015] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:40px_40px]"></div>
       </div>
 
       {/* 1. Persistent Left Sidebar Navigation */}
@@ -93,43 +91,55 @@ export default function Page() {
       <div className="flex-grow h-full flex flex-col overflow-hidden">
         
         {/* 2. Persistent Top Bar */}
-        <header className="h-[52px] border-b border-[#e0e0e0] px-6 flex items-center justify-between z-10 shrink-0 bg-white select-none">
-          <div className="text-left font-bold text-[#0a0a0a]">
-            <h2>
+        <header className="h-[52px] border-b border-[#e0e0e0] px-6 flex items-center justify-between z-10 shrink-0 bg-white/80 backdrop-blur-sm select-none">
+          <div className="flex items-center gap-2 text-left">
+            <i className={`text-[12px] text-[#8e8e93] ${
+              activeSection === "overview" ? "fa-solid fa-table-cells-large" :
+              activeSection === "leaks" ? "fa-solid fa-triangle-exclamation" :
+              activeSection === "clients" ? "fa-solid fa-users" :
+              activeSection === "activity" ? "fa-solid fa-clock" :
+              activeSection === "reports" ? "fa-solid fa-file-invoice" :
+              activeSection === "integrations" ? "fa-solid fa-plug" :
+              activeSection === "billing" ? "fa-solid fa-credit-card" :
+              activeSection === "settings" ? "fa-solid fa-gear" :
+              "fa-solid fa-circle-question"
+            }`}></i>
+            <h2 className="font-bold text-sm text-[#0a0a0a]">
               {activeClientId 
-                ? `client / ${activeClient?.name}`
+                ? <><span className="text-[#8e8e93]">clients /</span> {activeClient?.name}</>
                 : activeSection}
             </h2>
           </div>
 
-          <div className="flex items-center gap-6">
-            {/* Search Pill */}
+          <div className="flex items-center gap-5">
+            {/* Search */}
             <div className="relative">
               <input
                 type="text"
                 placeholder="search clients..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-48 pl-8 pr-4 py-1.5 bg-[#f2f2f2]/60 border border-[#e0e0e0] rounded-full text-xs outline-none focus:border-black transition-all focus:w-60 font-sans"
+                className="w-44 pl-8 pr-4 py-1.5 bg-[#fafafa] border border-[#e0e0e0] rounded-lg text-xs outline-none focus:border-[#0a0a0a] focus:bg-white transition-all focus:w-56 font-sans"
               />
-              <i className="fa-solid fa-magnifying-glass text-[14px] text-[#8e8e93] absolute left-3 top-2.5"></i>
+              <i className="fa-solid fa-magnifying-glass text-[11px] text-[#8e8e93] absolute left-2.5 top-2.5"></i>
             </div>
 
             {/* Icon Cluster */}
-            <div className="flex items-center gap-4 text-[#8e8e93]">
-              <button onClick={() => setActiveSection("settings")} className="hover:text-black transition-colors">
-                <i className="fa-solid fa-gear text-[18px]"></i>
+            <div className="flex items-center gap-3">
+              <button onClick={() => setActiveSection("settings")} className="w-8 h-8 rounded-lg flex items-center justify-center text-[#8e8e93] hover:text-[#0a0a0a] hover:bg-[#f2f2f2] transition-all">
+                <i className="fa-solid fa-gear text-[14px]"></i>
               </button>
-              <button onClick={() => alert("no new alerts.")} className="relative hover:text-black transition-colors">
-                <i className="fa-solid fa-bell text-[18px]"></i>
-                <span className="absolute top-0 right-0 w-1.5 h-1.5 bg-black rounded-full"></span>
+              <button onClick={() => alert("no new alerts.")} className="relative w-8 h-8 rounded-lg flex items-center justify-center text-[#8e8e93] hover:text-[#0a0a0a] hover:bg-[#f2f2f2] transition-all">
+                <i className="fa-solid fa-bell text-[14px]"></i>
+                <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-[#0a0a0a] rounded-full animate-notif-pulse"></span>
               </button>
-              <div className="w-6 h-6 rounded-full bg-[#f2f2f2] border border-black/10 flex items-center justify-center">
-                <i className="fa-solid fa-circle-user text-[16px] text-black"></i>
+              <div className="w-7 h-7 rounded-lg bg-[#0a0a0a] text-white flex items-center justify-center text-[9px] font-bold uppercase cursor-pointer hover:bg-black/80 transition-colors">
+                {userProfile?.name?.slice(0, 2) || "U"}
               </div>
             </div>
           </div>
         </header>
+
 
         {/* 3. Main Router viewport */}
         <div className="flex-1 overflow-y-auto p-6 z-10 relative">

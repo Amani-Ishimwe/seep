@@ -121,23 +121,23 @@ export default function ClientsView({ onAddClientClick }: ClientsViewProps) {
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <div className="text-left">
-          <span className="text-[10px] font-bold uppercase tracking-widest text-[#8e8e93] block mb-1">profitability overview</span>
-          <h1 className="text-3xl font-black tracking-tight text-[#0a0a0a]">client profitability audits</h1>
+          <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#8e8e93] block mb-1">profitability overview</span>
+          <h1 className="text-2xl font-black tracking-tight text-[#0a0a0a]">client profitability audits</h1>
         </div>
         <button
           onClick={onAddClientClick}
-          className="px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-wider rounded hover:bg-black/85 transition-colors"
+          className="px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-black/85 transition-colors"
         >
           add client
         </button>
       </div>
 
       {/* Main clients grid table */}
-      <div className="glass-panel rounded-lg p-6 overflow-hidden">
+      <div className="card rounded-xl p-6 overflow-hidden">
         <div className="w-full overflow-x-auto">
           <table className="w-full text-xs text-left border-collapse">
             <thead>
-              <tr className="border-b border-black/5 text-[#8e8e93] font-bold text-[9px] uppercase tracking-wider select-none">
+              <tr className="border-b border-[#e0e0e0] text-[#8e8e93] font-bold text-[9px] uppercase tracking-wider select-none">
                 <th className="pb-4 pr-2 cursor-pointer hover:text-black" onClick={() => handleSort("name")}>
                   <span className="flex items-center gap-1.5">client {getSortIcon("name")}</span>
                 </th>
@@ -166,7 +166,7 @@ export default function ClientsView({ onAddClientClick }: ClientsViewProps) {
                   <tr
                     key={client.id}
                     onClick={() => setActiveClientId(client.id)}
-                    className="border-b border-black/5 last:border-0 hover:bg-[#f2f2f2]/60 cursor-pointer transition-colors group"
+                    className="border-b border-[#e0e0e0] last:border-0 hover:bg-[#f2f2f2]/60 cursor-pointer transition-colors group"
                   >
                     {/* Client Name */}
                     <td className="py-4 pr-2 font-bold text-[#0a0a0a] group-hover:underline">
