@@ -60,7 +60,6 @@ export default function Sidebar({
     { id: "integrations", label: "integrations", iconClass: "fa-solid fa-plug" },
     { id: "billing", label: "billing", iconClass: "fa-solid fa-credit-card" },
     { id: "settings", label: "settings", iconClass: "fa-solid fa-gear" },
-    { id: "marketing", label: "marketing site", iconClass: "fa-solid fa-globe" },
     { id: "help", label: "help", iconClass: "fa-solid fa-circle-question" },
   ];
 

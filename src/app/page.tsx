@@ -64,14 +64,7 @@ export default function Page() {
     return <LandingPage onLaunchApp={() => setShowLanding(false)} />;
   }
 
-  // Intercept marketing site toggle from sidebar
-  if (activeSection === "marketing") {
-    setTimeout(() => {
-      setActiveSection("overview");
-      setShowLanding(true);
-    }, 0);
-    return null;
-  }
+
 
   // Onboarding Flow Check
   if (!onboarded) {
