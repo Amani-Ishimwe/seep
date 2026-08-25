@@ -41,13 +41,13 @@ export default function SettingsView() {
         <h1 className="text-2xl font-black tracking-tight text-[#0a0a0a]">account settings</h1>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6 sm:gap-8 items-start">
         
         {/* Left Form: Profile settings */}
-        <form onSubmit={handleProfileSave} className="card rounded-xl p-6 rounded-lg flex flex-col gap-6 w-full">
+        <form onSubmit={handleProfileSave} className="card rounded-xl p-5 sm:p-6 flex flex-col gap-6 w-full">
           <h3 className="text-xs font-bold uppercase tracking-wider text-black">freelancer billing profile</h3>
           
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-[9px] font-bold uppercase tracking-wider text-[#8e8e93] mb-1">freelancer name</label>
               <input
@@ -55,7 +55,7 @@ export default function SettingsView() {
                 required
                 value={profileName}
                 onChange={(e) => setProfileName(e.target.value)}
-                className="w-full px-3 py-2 bg-white border border-[#e0e0e0] rounded text-xs outline-none focus:border-black font-sans"
+                className="w-full px-3 py-2 bg-white border border-[#e0e0e0] rounded-lg text-xs outline-none focus:border-black font-sans"
               />
             </div>
             <div>
@@ -65,12 +65,12 @@ export default function SettingsView() {
                 required
                 value={profileEmail}
                 onChange={(e) => setProfileEmail(e.target.value)}
-                className="w-full px-3 py-2 bg-white border border-[#e0e0e0] rounded text-xs outline-none focus:border-black font-sans"
+                className="w-full px-3 py-2 bg-white border border-[#e0e0e0] rounded-lg text-xs outline-none focus:border-black font-sans"
               />
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
               <label className="block text-[9px] font-bold uppercase tracking-wider text-[#8e8e93] mb-1">standard rate</label>
               <input
@@ -78,7 +78,7 @@ export default function SettingsView() {
                 required
                 value={profileRate}
                 onChange={(e) => setProfileRate(e.target.value)}
-                className="w-full px-3 py-2 bg-white border border-[#e0e0e0] rounded text-xs outline-none focus:border-black font-sans"
+                className="w-full px-3 py-2 bg-white border border-[#e0e0e0] rounded-lg text-xs outline-none focus:border-black font-sans"
               />
             </div>
             <div>
@@ -86,7 +86,7 @@ export default function SettingsView() {
               <select
                 value={profileCurrency}
                 onChange={(e) => setProfileCurrency(e.target.value)}
-                className="w-full px-3 py-2 bg-white border border-[#e0e0e0] rounded text-xs outline-none focus:border-black font-sans font-bold text-[#555555]"
+                className="w-full px-3 py-2 bg-white border border-[#e0e0e0] rounded-lg text-xs outline-none focus:border-black font-sans font-bold text-[#555555]"
               >
                 <option value="usd">usd</option>
                 <option value="eur">eur</option>
@@ -98,7 +98,7 @@ export default function SettingsView() {
               <select
                 value={profileStructure}
                 onChange={(e) => setProfileStructure(e.target.value as any)}
-                className="w-full px-3 py-2 bg-white border border-[#e0e0e0] rounded text-xs outline-none focus:border-black font-sans font-bold text-[#555555]"
+                className="w-full px-3 py-2 bg-white border border-[#e0e0e0] rounded-lg text-xs outline-none focus:border-black font-sans font-bold text-[#555555]"
               >
                 <option value="hourly">hourly rate</option>
                 <option value="retainer">retainer cap</option>
@@ -113,7 +113,7 @@ export default function SettingsView() {
             <select
               value={profileAudience}
               onChange={(e) => setProfileAudience(e.target.value as any)}
-              className="w-full px-3 py-2 bg-white border border-[#e0e0e0] rounded text-xs outline-none focus:border-black font-sans font-bold text-[#555555]"
+              className="w-full px-3 py-2 bg-white border border-[#e0e0e0] rounded-lg text-xs outline-none focus:border-black font-sans font-bold text-[#555555]"
             >
               <option value="clients">individual clients</option>
               <option value="agencies">agencies</option>
@@ -124,7 +124,7 @@ export default function SettingsView() {
 
           <button
             type="submit"
-            className="px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-wider rounded self-start hover:bg-black/85 transition-colors"
+            className="px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-lg self-start hover:bg-black/85 transition-colors"
           >
             save billing profile
           </button>

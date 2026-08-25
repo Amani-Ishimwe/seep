@@ -37,6 +37,7 @@ export default function Page() {
 
   const [showAddClientModal, setShowAddClientModal] = useState(false);
   const [showLanding, setShowLanding] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Add Client Modal states
   const [newClientName, setNewClientName] = useState("");
@@ -80,20 +81,37 @@ export default function Page() {
         <div className="absolute inset-0 opacity-[0.015] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:40px_40px]"></div>
       </div>
 
-      {/* 1. Persistent Left Sidebar Navigation */}
+      {/* Mobile sidebar overlay */}
+      {sidebarOpen && (
+        <div 
+          className="fixed inset-0 z-40 bg-black/20 backdrop-blur-[2px] lg:hidden" 
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      {/* 1. Sidebar Navigation — drawer on mobile */}
       <Sidebar
         activeSection={activeSection}
-        setActiveSection={setActiveSection}
-        onAddClientClick={() => setShowAddClientModal(true)}
+        setActiveSection={(s) => { setActiveSection(s); setSidebarOpen(false); }}
+        onAddClientClick={() => { setShowAddClientModal(true); setSidebarOpen(false); }}
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
       />
 
       {/* Content panel */}
       <div className="flex-grow h-full flex flex-col overflow-hidden">
         
-        {/* 2. Persistent Top Bar */}
-        <header className="h-[52px] border-b border-[#e0e0e0] px-6 flex items-center justify-between z-10 shrink-0 bg-white/80 backdrop-blur-sm select-none">
+        {/* 2. Top Bar */}
+        <header className="h-[52px] border-b border-[#e0e0e0] px-4 md:px-6 flex items-center justify-between z-10 shrink-0 bg-white/80 backdrop-blur-sm select-none">
           <div className="flex items-center gap-2 text-left">
-            <i className={`text-[12px] text-[#8e8e93] ${
+            {/* Mobile hamburger */}
+            <button 
+              onClick={() => setSidebarOpen(true)}
+              className="lg:hidden w-8 h-8 rounded-lg flex items-center justify-center text-[#8e8e93] hover:text-[#0a0a0a] hover:bg-[#f2f2f2] transition-all mr-1"
+            >
+              <i className="fa-solid fa-bars text-[14px]"></i>
+            </button>
+            <i className={`text-[12px] text-[#8e8e93] hidden sm:block ${
               activeSection === "overview" ? "fa-solid fa-table-cells-large" :
               activeSection === "leaks" ? "fa-solid fa-triangle-exclamation" :
               activeSection === "clients" ? "fa-solid fa-users" :
@@ -106,26 +124,26 @@ export default function Page() {
             }`}></i>
             <h2 className="font-bold text-sm text-[#0a0a0a]">
               {activeClientId 
-                ? <><span className="text-[#8e8e93]">clients /</span> {activeClient?.name}</>
+                ? <><span className="text-[#8e8e93] hidden sm:inline">clients /</span> {activeClient?.name}</>
                 : activeSection}
             </h2>
           </div>
 
-          <div className="flex items-center gap-5">
-            {/* Search */}
-            <div className="relative">
+          <div className="flex items-center gap-3 md:gap-5">
+            {/* Search — hidden on very small screens */}
+            <div className="relative hidden sm:block">
               <input
                 type="text"
                 placeholder="search clients..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-44 pl-8 pr-4 py-1.5 bg-[#fafafa] border border-[#e0e0e0] rounded-lg text-xs outline-none focus:border-[#0a0a0a] focus:bg-white transition-all focus:w-56 font-sans"
+                className="w-36 md:w-44 pl-8 pr-4 py-1.5 bg-[#fafafa] border border-[#e0e0e0] rounded-lg text-xs outline-none focus:border-[#0a0a0a] focus:bg-white transition-all focus:w-56 font-sans"
               />
               <i className="fa-solid fa-magnifying-glass text-[11px] text-[#8e8e93] absolute left-2.5 top-2.5"></i>
             </div>
 
             {/* Icon Cluster */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 md:gap-3">
               <button onClick={() => setActiveSection("settings")} className="w-8 h-8 rounded-lg flex items-center justify-center text-[#8e8e93] hover:text-[#0a0a0a] hover:bg-[#f2f2f2] transition-all">
                 <i className="fa-solid fa-gear text-[14px]"></i>
               </button>
@@ -142,7 +160,7 @@ export default function Page() {
 
 
         {/* 3. Main Router viewport */}
-        <div className="flex-1 overflow-y-auto p-6 z-10 relative">
+        <div className="flex-1 overflow-y-auto p-4 md:p-6 z-10 relative">
           
           {syncErrorMessage && (
             <div className="fixed top-6 right-6 z-50 glass-panel rounded-md px-5 py-3 border-black text-xs font-semibold text-black animate-fade-in flex items-center gap-3">

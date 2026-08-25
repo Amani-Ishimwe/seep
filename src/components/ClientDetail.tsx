@@ -117,10 +117,10 @@ best,`;
       )}
 
       {/* Header with Back button */}
-      <div className="flex justify-between items-center mb-10 pb-4 border-b border-black/5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-8 pb-4 border-b border-[#e0e0e0]">
         <button
           onClick={() => setActiveClientId(null)}
-          className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#8e8e93] hover:text-black transition-colors"
+          className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#8e8e93] hover:text-black transition-colors self-start"
         >
           <i className="fa-solid fa-caret-left text-[14px]"></i>
           back to overview
@@ -140,7 +140,7 @@ best,`;
         ) : (
           <button
             onClick={() => setIsEditingRate(true)}
-            className="text-xs font-bold uppercase tracking-wider text-[#8e8e93] hover:text-black transition-colors flex items-center gap-1.5"
+            className="text-xs font-bold uppercase tracking-wider text-[#8e8e93] hover:text-black transition-colors flex items-center gap-1.5 self-start sm:self-auto"
           >
             <i className="fa-solid fa-pen text-[16px]"></i>
             edit rate (${client.rate}/hr)
@@ -149,15 +149,15 @@ best,`;
       </div>
 
       {/* Client Summary Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12 items-start mb-16">
+      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-12 items-start mb-16">
         {/* Left Side: Client Data */}
-        <div className="flex flex-col gap-12">
+        <div className="flex flex-col gap-8 sm:gap-12">
           {/* Main Info */}
           <div>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[#8e8e93] mb-3 block">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-[#8e8e93] mb-2 sm:mb-3 block">
               unbilled leak for {client.name}
             </span>
-            <h1 className="text-7xl font-black tracking-tighter text-[#0a0a0a] mb-4">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tighter text-[#0a0a0a] mb-3 sm:mb-4 font-sans">
               {formatCurrency(leakAmount)}
             </h1>
             <p className="text-sm text-[#555555]">
@@ -166,7 +166,7 @@ best,`;
           </div>
 
           {/* SVG Trend Chart */}
-          <div className="glass-panel rounded-lg p-6">
+          <div className="card rounded-xl p-5 sm:p-6">
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-xs font-bold uppercase tracking-wider text-[#555555] flex items-center gap-2">
                 <i className="fa-solid fa-chart-line text-[18px]"></i>
@@ -174,8 +174,8 @@ best,`;
               </h3>
             </div>
             
-            <div className="w-full flex justify-center items-end h-[160px] pb-6 relative pt-4">
-              <svg className="w-full max-w-[400px] h-[140px]" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div className="w-full overflow-x-auto flex justify-center items-end h-[160px] pb-6 relative pt-4">
+              <svg className="w-full min-w-[300px] max-w-[400px] h-[140px]" fill="none" xmlns="http://www.w3.org/2000/svg">
                 {allHistory.map((snap, idx) => {
                   const barHeight = (snap.leakAmount / maxLeakInHistory) * chartHeight;
                   const x = idx * (barWidth + barSpacing) + 20;
@@ -211,7 +211,7 @@ best,`;
                 </div>
               ) : (
                 clientEvents.map((evt) => (
-                  <div key={evt.id} className="flex justify-between items-center p-4 border border-black/5 rounded-lg bg-white">
+                  <div key={evt.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 sm:p-4 border border-[#e0e0e0] rounded-lg bg-white">
                     <div className="flex flex-col gap-0.5 text-left">
                       <span className="text-sm font-semibold text-black">{evt.title}</span>
                       <span className="text-xs text-[#555555]">
@@ -221,7 +221,7 @@ best,`;
 
                     <button
                       onClick={() => toggleEventBillable(evt.id)}
-                      className={`px-3 py-1.5 text-[9px] font-bold uppercase tracking-wider rounded border transition-all ${
+                      className={`px-3 py-1.5 text-[9px] font-bold uppercase tracking-wider rounded-md border transition-all self-start sm:self-auto ${
                         evt.billable 
                           ? "bg-black text-white border-black" 
                           : "bg-white text-[#8e8e93] border-[#e0e0e0] hover:border-black"
@@ -239,7 +239,7 @@ best,`;
         {/* Right Side: Action Forms */}
         <div className="flex flex-col gap-8">
           {/* Manual Invoice hours logging */}
-          <div className="glass-panel rounded-lg p-6 text-left">
+          <div className="card rounded-xl p-5 sm:p-6 text-left">
             <h3 className="text-xs font-bold uppercase tracking-wider text-[#555555] mb-4 flex items-center gap-2">
               <i className="fa-solid fa-file-invoice text-[18px]"></i>
               log manually invoiced hours
@@ -274,7 +274,7 @@ best,`;
 
           {/* Draft scope adjust message */}
           {leakAmount > 100 && (
-            <div className="glass-panel rounded-lg p-6 text-left">
+            <div className="card rounded-xl p-5 sm:p-6 text-left">
               <h3 className="text-xs font-bold uppercase tracking-wider text-[#555555] mb-4 flex items-center gap-2">
                 <i className="fa-regular fa-message text-[18px]"></i>
                 draft a scope adjustment
@@ -283,13 +283,13 @@ best,`;
                 your leak exceeds the $100 threshold. copy this direct message to address client drift.
               </p>
 
-              <div className="bg-[#ffffff] border border-black/5 rounded p-4 text-[11px] font-mono text-[#555555] whitespace-pre-line leading-relaxed mb-4 select-text">
+              <div className="bg-[#fafafa] border border-[#e0e0e0] rounded-lg p-4 text-[11px] font-mono text-[#555555] whitespace-pre-line leading-relaxed mb-4 select-text">
                 {generateEmailText()}
               </div>
 
               <button
                 onClick={copyToClipboard}
-                className="w-full py-2.5 bg-black text-white text-xs font-bold uppercase tracking-wider rounded hover:bg-black/85 transition-all"
+                className="w-full py-2.5 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-black/85 transition-all"
               >
                 {copySuccess ? "copied!" : "copy message text"}
               </button>

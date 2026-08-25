@@ -19,8 +19,8 @@ export default function LandingPage({ onLaunchApp }: LandingPageProps) {
   const [hourlyRate, setHourlyRate] = useState(85);
   const [leakHours, setLeakHours] = useState(3.5);
 
-  // FAQ Accordion states
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleFaq = (idx: number) => {
     setActiveFaq(activeFaq === idx ? null : idx);
@@ -68,10 +68,13 @@ export default function LandingPage({ onLaunchApp }: LandingPageProps) {
 
       {/* ── Sticky navbar ── always glassmorphic */}
       <header
-        className="fixed top-0 left-0 right-0 z-50 h-[60px] px-8 flex items-center justify-between select-none transition-all duration-300 bg-black/40 backdrop-blur-md border-b border-white/10"
+        className="fixed top-0 left-0 right-0 z-50 h-[60px] px-4 sm:px-8 flex items-center justify-between select-none transition-all duration-300 bg-black/40 backdrop-blur-md border-b border-white/10"
       >
         {/* Logo */}
-        <div className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity shrink-0">
+        <div 
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity shrink-0"
+        >
           <div className="w-6 h-6 bg-white flex items-center justify-center shrink-0">
             <i className="fa-solid fa-droplet text-[10px] text-black"></i>
           </div>
@@ -88,18 +91,81 @@ export default function LandingPage({ onLaunchApp }: LandingPageProps) {
         </nav>
 
         {/* Right actions */}
-        <div className="flex items-center gap-4 shrink-0">
-          <button onClick={onLaunchApp} className="text-[11px] font-semibold text-white/70 hover:text-white transition-colors cursor-pointer tracking-wide">
+        <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+          <button onClick={onLaunchApp} className="text-[11px] font-semibold text-white/70 hover:text-white transition-colors cursor-pointer tracking-wide hidden sm:block">
             log in
           </button>
           <button
             onClick={onLaunchApp}
-            className="px-5 py-2 border border-white/40 text-white text-[11px] font-bold tracking-wide hover:bg-white hover:text-black transition-all cursor-pointer"
+            className="px-4 sm:px-5 py-2 border border-white/40 text-white text-[11px] font-bold tracking-wide hover:bg-white hover:text-black transition-all cursor-pointer"
           >
             get started
           </button>
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden w-8 h-8 flex items-center justify-center text-white/80 hover:text-white"
+            aria-label="Toggle navigation menu"
+          >
+            <i className={`fa-solid ${mobileMenuOpen ? 'fa-xmark' : 'fa-bars'} text-[16px]`}></i>
+          </button>
         </div>
       </header>
+
+      {/* Mobile nav drawer */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-x-0 top-[60px] z-40 bg-[#0a0a0a]/95 backdrop-blur-lg border-b border-white/10 p-6 flex flex-col gap-4 md:hidden animate-fade-in-up">
+          <a 
+            href="#how-it-works" 
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-sm font-bold text-white/80 hover:text-white transition-colors py-2 border-b border-white/5"
+          >
+            how it works
+          </a>
+          <a 
+            href="#calculator" 
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-sm font-bold text-white/80 hover:text-white transition-colors py-2 border-b border-white/5"
+          >
+            calculator
+          </a>
+          <a 
+            href="#features" 
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-sm font-bold text-white/80 hover:text-white transition-colors py-2 border-b border-white/5"
+          >
+            features
+          </a>
+          <a 
+            href="#pricing" 
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-sm font-bold text-white/80 hover:text-white transition-colors py-2 border-b border-white/5"
+          >
+            pricing
+          </a>
+          <a 
+            href="#faq" 
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-sm font-bold text-white/80 hover:text-white transition-colors py-2 border-b border-white/5"
+          >
+            faq
+          </a>
+          <div className="flex flex-col gap-2 pt-2">
+            <button 
+              onClick={() => { setMobileMenuOpen(false); onLaunchApp(); }} 
+              className="w-full py-2.5 text-center text-xs font-bold text-white border border-white/20 rounded hover:bg-white/10 transition-colors"
+            >
+              log in
+            </button>
+            <button 
+              onClick={() => { setMobileMenuOpen(false); onLaunchApp(); }} 
+              className="w-full py-2.5 text-center text-xs font-bold bg-white text-black rounded hover:bg-white/90 transition-colors"
+            >
+              get started
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* ── Hero Section ── Lateral-style split layout ── */}
       <section
@@ -112,40 +178,40 @@ export default function LandingPage({ onLaunchApp }: LandingPageProps) {
         }}
       >
         {/* Left content */}
-        <div className="relative z-10 flex flex-col justify-center h-full max-w-[520px] px-12 pt-40 pb-32">
+        <div className="relative z-10 flex flex-col justify-center h-full max-w-[540px] px-6 sm:px-10 md:px-12 pt-32 md:pt-40 pb-28 md:pb-32">
 
           {/* Badge */}
-          <span className="inline-flex items-center gap-2 self-start px-3 py-1 border border-white/25 bg-white/10 backdrop-blur-sm text-white text-[10px] font-semibold tracking-widest uppercase mb-8 animate-fade-in-up">
+          <span className="inline-flex items-center gap-2 self-start px-3 py-1 border border-white/25 bg-white/10 backdrop-blur-sm text-white text-[9px] sm:text-[10px] font-semibold tracking-widest uppercase mb-6 sm:mb-8 animate-fade-in-up">
             <i className="fa-solid fa-circle-dot text-green-400 text-[8px]"></i>
             seep raises $2m seed — read announcement
             <i className="fa-solid fa-arrow-right text-[8px] text-white/50"></i>
           </span>
 
           {/* Headline */}
-          <h1 className="text-5xl md:text-[3.8rem] font-black leading-[1.05] mb-5 animate-fade-in-up [animation-delay:0.1s]">
+          <h1 className="text-4xl sm:text-5xl md:text-[3.8rem] font-black leading-[1.05] mb-4 sm:mb-5 animate-fade-in-up [animation-delay:0.1s]">
             <span className="text-white">your revenue</span><br />
             <span className="text-white/40">stops leaking.</span>
           </h1>
 
           {/* Subtext */}
-          <p className="text-sm text-white/60 leading-relaxed mb-10 max-w-sm animate-fade-in-up [animation-delay:0.2s]">
+          <p className="text-xs sm:text-sm text-white/60 leading-relaxed mb-8 sm:mb-10 max-w-sm animate-fade-in-up [animation-delay:0.2s]">
             seep automatically detects unbilled hours, unscheduled client calls, and revision drift — and recovers them before they vanish.
           </p>
 
           {/* CTA */}
-          <div className="flex items-center gap-4 animate-fade-in-up [animation-delay:0.3s]">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 animate-fade-in-up [animation-delay:0.3s]">
             <button
               onClick={onLaunchApp}
-              className="px-7 py-3 bg-white text-black text-[11px] font-bold uppercase tracking-widest hover:bg-white/90 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer shadow-md"
+              className="px-7 py-3.5 bg-white text-black text-[11px] font-bold uppercase tracking-widest hover:bg-white/90 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer shadow-md text-center"
             >
               start for free
             </button>
-            <button
-              onClick={onLaunchApp}
-              className="px-7 py-3 border border-white/30 text-white text-[11px] font-bold uppercase tracking-widest hover:bg-white/10 hover:border-white/60 transition-all cursor-pointer"
+            <a
+              href="#how-it-works"
+              className="px-7 py-3.5 border border-white/30 text-white text-[11px] font-bold uppercase tracking-widest hover:bg-white/10 hover:border-white/60 transition-all cursor-pointer text-center"
             >
               see how it works
-            </button>
+            </a>
           </div>
         </div>
 
@@ -324,28 +390,28 @@ export default function LandingPage({ onLaunchApp }: LandingPageProps) {
             </div>
 
             {/* Results display */}
-            <div className="bg-black text-white p-8 rounded flex flex-col justify-between min-h-[240px] text-left relative overflow-hidden shadow-lg hover:scale-[1.01] transition-transform duration-300">
+            <div className="bg-black text-white p-6 sm:p-8 rounded flex flex-col justify-between min-h-[240px] text-left relative overflow-hidden shadow-lg hover:scale-[1.01] transition-transform duration-300">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.06),transparent_65%)] pointer-events-none"></div>
               
               <div className="relative z-10">
                 <span className="text-[9px] font-bold uppercase tracking-widest text-[#8e8e93] block mb-3">estimated leakage scope</span>
                 <div className="flex flex-col gap-2">
-                  <span className="text-4xl font-black tracking-tight font-sans text-white transition-all duration-200">
+                  <span className="text-3xl sm:text-4xl font-black tracking-tight font-sans text-white transition-all duration-200">
                     {formatCurrency(weeklyLeak)} <span className="text-xs text-[#8e8e93] font-medium lowercase">lost every week</span>
                   </span>
-                  <span className="text-4xl font-black tracking-tight font-sans text-[#EA4335] transition-all duration-200">
+                  <span className="text-3xl sm:text-4xl font-black tracking-tight font-sans text-[#EA4335] transition-all duration-200">
                     {formatCurrency(annualLeak)} <span className="text-xs text-[#8e8e93] font-medium lowercase">lost every year</span>
                   </span>
                 </div>
               </div>
 
-              <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between relative z-10">
-                <span className="text-[10px] text-[#8e8e93] leading-relaxed max-w-[200px]">
+              <div className="mt-8 pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
+                <span className="text-[10px] text-[#8e8e93] leading-relaxed max-w-[240px]">
                   seep recovers up to 88% of lost client hours automatically.
                 </span>
                 <button
                   onClick={onLaunchApp}
-                  className="px-5 py-2.5 bg-white text-black text-[9px] font-black uppercase tracking-wider rounded hover:bg-[#f2f2f2] hover:scale-[1.03] transition-all cursor-pointer shadow"
+                  className="px-5 py-2.5 bg-white text-black text-[9px] font-black uppercase tracking-wider rounded hover:bg-[#f2f2f2] hover:scale-[1.03] transition-all cursor-pointer shadow text-center self-start sm:self-auto"
                 >
                   plug leak now
                 </button>
@@ -674,17 +740,17 @@ export default function LandingPage({ onLaunchApp }: LandingPageProps) {
           </button>
 
           {/* Trust stats */}
-          <div className="flex items-center gap-8 mt-14 text-center">
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 mt-14 text-center">
             <div className="flex flex-col items-center">
               <span className="text-2xl font-black text-white">88%</span>
               <span className="text-[9px] text-white/30 uppercase tracking-widest mt-1">recovery rate</span>
             </div>
-            <div className="w-px h-8 bg-white/10"></div>
+            <div className="hidden sm:block w-px h-8 bg-white/10"></div>
             <div className="flex flex-col items-center">
               <span className="text-2xl font-black text-white">&lt;2 min</span>
               <span className="text-[9px] text-white/30 uppercase tracking-widest mt-1">setup time</span>
             </div>
-            <div className="w-px h-8 bg-white/10"></div>
+            <div className="hidden sm:block w-px h-8 bg-white/10"></div>
             <div className="flex flex-col items-center">
               <span className="text-2xl font-black text-white">$0</span>
               <span className="text-[9px] text-white/30 uppercase tracking-widest mt-1">to start</span>

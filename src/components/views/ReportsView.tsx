@@ -91,21 +91,21 @@ export default function ReportsView() {
         <div className="md:col-span-8 flex flex-col gap-8">
           
           {/* Weekly Leak Summary Card */}
-          <div className="card rounded-xl p-6 rounded-lg text-left">
+          <div className="card rounded-xl p-5 sm:p-6 text-left">
             <h3 className="text-xs font-bold uppercase tracking-wider text-[#555555] mb-6">weekly leak report</h3>
             
-            <div className="grid grid-cols-3 gap-6 border-b border-[#e0e0e0] pb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 border-b border-[#e0e0e0] pb-6">
               <div>
                 <span className="text-[9px] uppercase tracking-wider font-bold text-[#8e8e93] block">potentially unbilled</span>
-                <span className="text-2xl font-black text-black">{formatCurrency(totalLeak)}</span>
+                <span className="text-xl sm:text-2xl font-black text-black">{formatCurrency(totalLeak)}</span>
               </div>
               <div>
                 <span className="text-[9px] uppercase tracking-wider font-bold text-[#8e8e93] block">recovered</span>
-                <span className="text-2xl font-black text-[#006622]">{formatCurrency(recoveredThisMonth)}</span>
+                <span className="text-xl sm:text-2xl font-black text-[#006622]">{formatCurrency(recoveredThisMonth)}</span>
               </div>
               <div>
                 <span className="text-[9px] uppercase tracking-wider font-bold text-[#8e8e93] block">still unresolved</span>
-                <span className="text-2xl font-black text-[#a94442]">{formatCurrency(unresolvedLeak)}</span>
+                <span className="text-xl sm:text-2xl font-black text-[#a94442]">{formatCurrency(unresolvedLeak)}</span>
               </div>
             </div>
 
@@ -116,25 +116,25 @@ export default function ReportsView() {
           </div>
 
           {/* Effective Hourly Rate comparison */}
-          <div className="card rounded-xl p-6 rounded-lg text-left">
-            <div className="flex justify-between items-start mb-6">
+          <div className="card rounded-xl p-5 sm:p-6 text-left">
+            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-6">
               <div>
                 <h3 className="text-xs font-bold uppercase tracking-wider text-[#555555]">effective hourly rate</h3>
                 <p className="text-[10px] text-[#8e8e93] mt-0.5">real earnings vs your standard base rate</p>
               </div>
-              <span className={`text-xs font-bold px-2 py-0.5 rounded ${rateDiff < 0 ? "bg-[#a94442]/10 text-[#a94442]" : "bg-[#006622]/10 text-[#006622]"}`}>
+              <span className={`text-xs font-bold px-2 py-0.5 rounded self-start sm:self-auto ${rateDiff < 0 ? "bg-[#a94442]/10 text-[#a94442]" : "bg-[#006622]/10 text-[#006622]"}`}>
                 {rateDiff < 0 ? `-${formatCurrency(Math.abs(rateDiff))}/hr delta` : `+${formatCurrency(rateDiff)}/hr delta`}
               </span>
             </div>
 
-            <div className="flex items-end gap-12 py-4">
+            <div className="flex flex-wrap items-end gap-6 sm:gap-12 py-4">
               <div>
                 <span className="text-[9px] uppercase tracking-wider font-bold text-[#8e8e93] block">target rate</span>
-                <span className="text-2xl font-black text-black">${targetRate}/hr</span>
+                <span className="text-xl sm:text-2xl font-black text-black">${targetRate}/hr</span>
               </div>
               <div>
                 <span className="text-[9px] uppercase tracking-wider font-bold text-[#8e8e93] block">actual effective rate</span>
-                <span className="text-2xl font-black text-[#a94442]">${Math.round(actualRate)}/hr</span>
+                <span className="text-xl sm:text-2xl font-black text-[#a94442]">${Math.round(actualRate)}/hr</span>
               </div>
             </div>
 

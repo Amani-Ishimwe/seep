@@ -119,23 +119,23 @@ export default function ClientsView({ onAddClientClick }: ClientsViewProps) {
     <div className="flex flex-col select-none max-w-5xl mx-auto py-2 text-lowercase text-[#0a0a0a]">
       
       {/* Header */}
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-8">
         <div className="text-left">
           <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#8e8e93] block mb-1">profitability overview</span>
           <h1 className="text-2xl font-black tracking-tight text-[#0a0a0a]">client profitability audits</h1>
         </div>
         <button
           onClick={onAddClientClick}
-          className="px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-black/85 transition-colors"
+          className="px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-black/85 transition-colors self-start sm:self-auto"
         >
           add client
         </button>
       </div>
 
       {/* Main clients grid table */}
-      <div className="card rounded-xl p-6 overflow-hidden">
-        <div className="w-full overflow-x-auto">
-          <table className="w-full text-xs text-left border-collapse">
+      <div className="card rounded-xl p-4 sm:p-6 overflow-hidden">
+        <div className="w-full overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
+          <table className="w-full min-w-[640px] text-xs text-left border-collapse">
             <thead>
               <tr className="border-b border-[#e0e0e0] text-[#8e8e93] font-bold text-[9px] uppercase tracking-wider select-none">
                 <th className="pb-4 pr-2 cursor-pointer hover:text-black" onClick={() => handleSort("name")}>

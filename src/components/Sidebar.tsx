@@ -7,12 +7,16 @@ interface SidebarProps {
   activeSection: string;
   setActiveSection: (section: string) => void;
   onAddClientClick: () => void;
+  isOpen?: boolean;
+  onClose?: () => void;
 }
 
 export default function Sidebar({
   activeSection,
   setActiveSection,
   onAddClientClick,
+  isOpen = false,
+  onClose,
 }: SidebarProps) {
   const {
     calendarConnected,
@@ -64,22 +68,38 @@ export default function Sidebar({
   ];
 
   return (
-    <aside className="w-[240px] h-full bg-[#fafafa] border-r border-[#e0e0e0] px-3 py-4 flex flex-col justify-between z-10 shrink-0 select-none">
+    <aside className={`
+      w-[240px] h-full bg-[#fafafa] border-r border-[#e0e0e0] px-3 py-4 flex flex-col justify-between z-50 shrink-0 select-none
+      fixed top-0 left-0 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
+      lg:relative lg:translate-x-0 lg:z-10
+      ${isOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'}
+    `}>
       <div className="flex flex-col gap-4">
         
         {/* Brand Logomark */}
-        <div 
-          onClick={() => {
-            setActiveClientId(null);
-            setActiveSection("overview");
-          }}
-          className="flex items-center gap-2.5 text-[#0a0a0a] cursor-pointer hover:opacity-80 transition-opacity px-2 py-1"
-        >
-          <div className="w-7 h-7 bg-black rounded-md flex items-center justify-center text-white shrink-0">
-            <i className="fa-solid fa-droplet text-[10px] text-white"></i>
+        <div className="flex items-center justify-between">
+          <div 
+            onClick={() => {
+              setActiveClientId(null);
+              setActiveSection("overview");
+            }}
+            className="flex items-center gap-2.5 text-[#0a0a0a] cursor-pointer hover:opacity-80 transition-opacity px-2 py-1"
+          >
+            <div className="w-7 h-7 bg-black rounded-md flex items-center justify-center text-white shrink-0">
+              <i className="fa-solid fa-droplet text-[10px] text-white"></i>
+            </div>
+            <span className="font-black text-lg tracking-tighter font-sans select-none">seep</span>
+            <span className="text-[7px] font-mono text-[#8e8e93] border border-[#e0e0e0] px-1.5 py-0.5 rounded select-none">v1.0</span>
           </div>
-          <span className="font-black text-lg tracking-tighter font-sans select-none">seep</span>
-          <span className="text-[7px] font-mono text-[#8e8e93] border border-[#e0e0e0] px-1.5 py-0.5 rounded select-none ml-auto">v1.0</span>
+          {/* Mobile close */}
+          {onClose && (
+            <button 
+              onClick={onClose}
+              className="lg:hidden w-8 h-8 rounded-lg flex items-center justify-center text-[#8e8e93] hover:text-[#0a0a0a] hover:bg-[#e0e0e0] transition-all"
+            >
+              <i className="fa-solid fa-xmark text-[14px]"></i>
+            </button>
+          )}
         </div>
 
         {/* User Account Details */}

@@ -61,17 +61,17 @@ export default function ActivityView() {
     <div className="flex flex-col select-none max-w-5xl mx-auto py-2 text-lowercase text-[#0a0a0a]">
       
       {/* Header */}
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-8">
         <div className="text-left">
           <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#8e8e93] block mb-1">signal activity logs</span>
           <h1 className="text-2xl font-black tracking-tight text-[#0a0a0a]">synced active feeds</h1>
         </div>
         
-        <div className="flex gap-3">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           <select
             value={filterClientId}
             onChange={(e) => setFilterClientId(e.target.value)}
-            className="px-3 py-2 text-xs bg-white border border-[#e0e0e0] rounded outline-none focus:border-black font-sans font-bold text-[#555555]"
+            className="px-3 py-2 text-xs bg-white border border-[#e0e0e0] rounded-lg outline-none focus:border-black font-sans font-bold text-[#555555]"
           >
             <option value="">all clients</option>
             {clients.map((c) => (
@@ -89,9 +89,9 @@ export default function ActivityView() {
 
       {/* Manual Activity Input Form */}
       {showAddActivityForm && (
-        <form onSubmit={handleManualActivitySubmit} className="card rounded-xl p-6 rounded-lg text-left mb-8 flex flex-col gap-4">
+        <form onSubmit={handleManualActivitySubmit} className="card rounded-xl p-5 sm:p-6 text-left mb-6 sm:mb-8 flex flex-col gap-4">
           <h3 className="text-xs font-bold uppercase tracking-wider text-black">log manual billable activity</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
               <label className="block text-[9px] font-bold uppercase tracking-wider text-[#8e8e93] mb-1">activity title</label>
               <input
@@ -132,7 +132,7 @@ export default function ActivityView() {
           </div>
           <button
             type="submit"
-            className="px-4 py-2 bg-black text-white text-[10px] font-bold uppercase tracking-wider rounded self-start hover:bg-black/85 transition-colors"
+            className="px-4 py-2 bg-black text-white text-[10px] font-bold uppercase tracking-wider rounded-lg self-start hover:bg-black/85 transition-colors"
           >
             log active hours
           </button>
@@ -140,8 +140,8 @@ export default function ActivityView() {
       )}
 
       {/* Timeline entries list */}
-      <div className="card rounded-xl p-6">
-        <div className="flex flex-col gap-4">
+      <div className="card rounded-xl p-4 sm:p-6">
+        <div className="flex flex-col gap-3 sm:gap-4">
           {filteredEvents.length === 0 ? (
             <div className="text-center py-10 text-xs text-[#8e8e93]">
               no signal activity matches filters.
@@ -153,15 +153,15 @@ export default function ActivityView() {
               const value = evt.duration * rate;
 
               return (
-                <div key={evt.id} className="flex justify-between items-center p-4 border border-[#e0e0e0] rounded-lg bg-white/40 hover:bg-white transition-colors">
-                  <div className="text-left flex items-center gap-4">
-                    <div className="p-2.5 bg-[#f2f2f2] rounded-md text-black shrink-0">
+                <div key={evt.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 sm:p-4 border border-[#e0e0e0] rounded-lg bg-white/40 hover:bg-white transition-colors">
+                  <div className="text-left flex items-start sm:items-center gap-3 sm:gap-4">
+                    <div className="p-2.5 bg-[#f2f2f2] rounded-md text-black shrink-0 mt-0.5 sm:mt-0">
                       {evt.title.includes("kickoff") || evt.title.includes("meeting") || evt.title.includes("sync") ? (
-                        <i className="fa-regular fa-calendar-check text-[18px]"></i>
+                        <i className="fa-regular fa-calendar-check text-[16px] sm:text-[18px]"></i>
                       ) : evt.title.includes("slack") || evt.title.includes("email") ? (
-                        <i className="fa-regular fa-comment-dots text-[18px]"></i>
+                        <i className="fa-regular fa-comment-dots text-[16px] sm:text-[18px]"></i>
                       ) : (
-                        <i className="fa-solid fa-pen-to-square text-[18px]"></i>
+                        <i className="fa-solid fa-pen-to-square text-[16px] sm:text-[18px]"></i>
                       )}
                     </div>
                     <div>
@@ -172,8 +172,8 @@ export default function ActivityView() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4">
-                    <div className="text-right">
+                  <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-4 pt-2 sm:pt-0 border-t sm:border-t-0 border-[#e0e0e0]/60 w-full sm:w-auto">
+                    <div className="text-left sm:text-right">
                       <span className="text-[9px] uppercase tracking-wider font-bold text-[#8e8e93] block">value</span>
                       <span className="text-xs font-bold text-black">{formatCurrency(value)}</span>
                     </div>
@@ -182,7 +182,7 @@ export default function ActivityView() {
                       <select
                         value={evt.clientId || ""}
                         onChange={(e) => linkEventToClient(evt.id, e.target.value || null)}
-                        className="px-2 py-1.5 text-[10px] bg-white border border-[#e0e0e0] rounded outline-none focus:border-black font-sans font-bold text-[#555555]"
+                        className="px-2 py-1.5 text-[10px] bg-white border border-[#e0e0e0] rounded-md outline-none focus:border-black font-sans font-bold text-[#555555] max-w-[120px]"
                       >
                         <option value="">unassociated</option>
                         {clients.map((c) => (
@@ -192,7 +192,7 @@ export default function ActivityView() {
 
                       <button
                         onClick={() => toggleEventBillable(evt.id)}
-                        className={`px-3 py-1.5 text-[9px] font-bold uppercase tracking-wider rounded border transition-colors ${
+                        className={`px-3 py-1.5 text-[9px] font-bold uppercase tracking-wider rounded-md border transition-colors ${
                           evt.billable 
                             ? "bg-black text-white border-black" 
                             : "bg-white text-[#8e8e93] border-[#e0e0e0] hover:border-black"

@@ -68,7 +68,7 @@ export default function Onboarding() {
         <div className="absolute w-[400px] h-[400px] rounded-full bottom-[10%] left-[10%] bg-radial from-[#f2f2f2]/60 to-transparent opacity-30 border border-[#e0e0e0]/20 animate-float-slower"></div>
       </div>
 
-      <div className="glass-panel w-full max-w-[480px] p-8 rounded-lg relative z-10 bg-white">
+      <div className="card rounded-xl w-full max-w-[480px] p-5 sm:p-8 relative z-10 bg-white">
         
         {/* Step Indicator */}
         <div className="flex gap-1.5 mb-8">
@@ -94,7 +94,7 @@ export default function Onboarding() {
             </p>
             <button
               onClick={handleNextStep}
-              className="w-full py-3 bg-black text-white text-xs font-bold uppercase tracking-wider rounded hover:bg-black/85 transition-colors"
+              className="w-full py-3 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-black/85 transition-colors"
             >
               get started
             </button>
@@ -111,7 +111,7 @@ export default function Onboarding() {
               we use your base hourly rate to estimate the financial value of unbilled leaks.
             </p>
 
-            <div className="flex gap-4 w-full mb-8">
+            <div className="flex flex-col sm:flex-row gap-4 w-full mb-8">
               <div className="flex-1">
                 <label className="block text-[9px] font-bold text-[#8e8e93] uppercase tracking-wider mb-1.5">hourly rate</label>
                 <input
@@ -119,7 +119,7 @@ export default function Onboarding() {
                   required
                   value={rateVal}
                   onChange={(e) => setRateVal(e.target.value)}
-                  className="w-full px-3 py-2 bg-white border border-[#e0e0e0] rounded text-sm outline-none focus:border-black transition-all font-sans"
+                  className="w-full px-3 py-2 bg-white border border-[#e0e0e0] rounded-lg text-sm outline-none focus:border-black transition-all font-sans"
                 />
               </div>
               <div>
@@ -127,7 +127,7 @@ export default function Onboarding() {
                 <select
                   value={currencyVal}
                   onChange={(e) => setCurrencyVal(e.target.value)}
-                  className="px-3 py-2 bg-white border border-[#e0e0e0] rounded text-sm outline-none focus:border-black font-sans font-bold text-[#555555]"
+                  className="w-full sm:w-auto px-3 py-2 bg-white border border-[#e0e0e0] rounded-lg text-sm outline-none focus:border-black font-sans font-bold text-[#555555]"
                 >
                   <option value="usd">usd</option>
                   <option value="eur">eur</option>
@@ -140,14 +140,14 @@ export default function Onboarding() {
               <button 
                 type="button" 
                 onClick={handlePrevStep}
-                className="px-4 py-2 bg-white border border-[#e0e0e0] text-[#8e8e93] text-xs font-bold uppercase tracking-wider rounded hover:border-black hover:text-black transition-colors"
+                className="px-4 py-2 bg-white border border-[#e0e0e0] text-[#8e8e93] text-xs font-bold uppercase tracking-wider rounded-lg hover:border-black hover:text-black transition-colors"
               >
                 back
               </button>
               <button
                 type="button"
                 onClick={handleSaveRateAndNext}
-                className="px-6 py-2 bg-black text-white text-xs font-bold uppercase tracking-wider rounded hover:bg-black/85 transition-colors"
+                className="px-6 py-2 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-black/85 transition-colors"
               >
                 continue
               </button>
@@ -165,7 +165,7 @@ export default function Onboarding() {
               select your primary contracting arrangement structure.
             </p>
 
-            <div className="grid grid-cols-2 gap-4 w-full mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full mb-8">
               {[
                 { id: "hourly", label: "hourly", desc: "fixed hourly billing rate" },
                 { id: "retainer", label: "retainer", desc: "monthly cap allowance hours" },
@@ -176,7 +176,7 @@ export default function Onboarding() {
                   type="button"
                   key={item.id}
                   onClick={() => handleSaveStructureAndNext(item.id as any)}
-                  className="glass-panel p-4 rounded-lg text-left hover:border-black transition-all flex flex-col justify-between"
+                  className="card p-4 rounded-lg text-left hover:border-black transition-all flex flex-col justify-between"
                 >
                   <span className="font-bold text-xs text-black block mb-1">{item.label}</span>
                   <span className="text-[10px] text-[#8e8e93] leading-snug">{item.desc}</span>
@@ -187,7 +187,7 @@ export default function Onboarding() {
             <button 
               type="button" 
               onClick={handlePrevStep}
-              className="px-4 py-2 bg-white border border-[#e0e0e0] text-[#8e8e93] text-xs font-bold uppercase tracking-wider rounded hover:border-black hover:text-black transition-colors"
+              className="px-4 py-2 bg-white border border-[#e0e0e0] text-[#8e8e93] text-xs font-bold uppercase tracking-wider rounded-lg hover:border-black hover:text-black transition-colors"
             >
               back
             </button>
@@ -204,7 +204,7 @@ export default function Onboarding() {
               we calibrate our leak parameters based on your primary clientele.
             </p>
 
-            <div className="grid grid-cols-2 gap-4 w-full mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full mb-8">
               {[
                 { id: "clients", label: "direct clients", desc: "contracting direct with clients" },
                 { id: "agencies", label: "agencies", desc: "outsourced agency assignments" },
@@ -215,7 +215,7 @@ export default function Onboarding() {
                   type="button"
                   key={item.id}
                   onClick={() => handleSaveAudienceAndNext(item.id as any)}
-                  className="glass-panel p-4 rounded-lg text-left hover:border-black transition-all flex flex-col justify-between"
+                  className="card p-4 rounded-lg text-left hover:border-black transition-all flex flex-col justify-between"
                 >
                   <span className="font-bold text-xs text-black block mb-1">{item.label}</span>
                   <span className="text-[10px] text-[#8e8e93] leading-snug">{item.desc}</span>
@@ -226,7 +226,7 @@ export default function Onboarding() {
             <button 
               type="button" 
               onClick={handlePrevStep}
-              className="px-4 py-2 bg-white border border-[#e0e0e0] text-[#8e8e93] text-xs font-bold uppercase tracking-wider rounded hover:border-black hover:text-black transition-colors"
+              className="px-4 py-2 bg-white border border-[#e0e0e0] text-[#8e8e93] text-xs font-bold uppercase tracking-wider rounded-lg hover:border-black hover:text-black transition-colors"
             >
               back
             </button>

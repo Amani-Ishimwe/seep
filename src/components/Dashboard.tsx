@@ -77,13 +77,13 @@ export default function Dashboard() {
     <div className="flex flex-col select-none max-w-5xl mx-auto py-2 text-lowercase text-[#0a0a0a] gap-6">
       
       {/* Date header greeting */}
-      <div className="flex justify-between items-end pb-0">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 pb-0">
         <div className="text-left">
-          <h1 className="text-2xl font-black tracking-tight">good morning, {userProfile.name}</h1>
-          <p className="text-xs text-[#8e8e93] mt-1 font-sans">here's where your billable time went this week.</p>
+          <h1 className="text-xl sm:text-2xl font-black tracking-tight">good morning, {userProfile.name}</h1>
+          <p className="text-xs text-[#8e8e93] mt-0.5 sm:mt-1 font-sans">here's where your billable time went this week.</p>
         </div>
         
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 self-start sm:self-auto">
           <span className="px-3 py-1.5 bg-white border border-[#e0e0e0] rounded-lg text-[10px] font-semibold text-[#555555]">
             august 24 – august 30, 2026
           </span>
@@ -100,7 +100,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
         
         {/* Left: Hero Financial Leak Card (5 cols) */}
-        <div className="lg:col-span-5 bg-[#0a0a0a] text-white rounded-xl p-6 flex flex-col justify-between min-h-[200px] relative overflow-hidden text-left animate-card-in">
+        <div className="lg:col-span-5 bg-[#0a0a0a] text-white rounded-xl p-5 sm:p-6 flex flex-col justify-between min-h-[200px] relative overflow-hidden text-left animate-card-in">
           {/* Grid texture */}
           <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.04),transparent_60%)] pointer-events-none"></div>
@@ -112,17 +112,17 @@ export default function Dashboard() {
                 <i className="fa-solid fa-droplet text-[14px] text-white/30"></i>
               </div>
             </div>
-            <h2 className="text-[3rem] font-black leading-none tracking-tighter text-white font-sans">
+            <h2 className="text-4xl sm:text-[3rem] font-black leading-none tracking-tighter text-white font-sans">
               <AnimatedNumber value={totalLeak} format={formatCurrency} />
             </h2>
-            <div className="flex items-center gap-2 mt-3 text-[11px] text-white/40">
+            <div className="flex flex-wrap items-center gap-2 mt-3 text-[11px] text-white/40">
               <span>{totalUnbilledHours.toFixed(1)} hours detected this week</span>
               <span className="text-white/15">•</span>
               <span className="text-white font-semibold">↑ 18% vs last week</span>
             </div>
           </div>
 
-          <div className="flex gap-2.5 mt-6 z-10 relative">
+          <div className="flex flex-wrap gap-2.5 mt-6 z-10 relative">
             <button
               onClick={() => setActiveSection("leaks")}
               className="px-4 py-2 bg-white text-[#0a0a0a] text-[10px] font-bold uppercase tracking-wider rounded-lg hover:bg-white/90 transition-colors cursor-pointer"
@@ -139,7 +139,7 @@ export default function Dashboard() {
         </div>
 
         {/* Right: Secondary Metrics (7 cols) */}
-        <div className="lg:col-span-7 grid grid-cols-2 gap-3">
+        <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3">
           {/* Metric 1: Recovered */}
           <div className="card rounded-xl p-4 text-left flex flex-col justify-between animate-card-in" style={{ animationDelay: "0.05s" }}>
             <div>
@@ -196,7 +196,7 @@ export default function Dashboard() {
       </div>
 
       {/* Ranked client leaks list */}
-      <div className="card rounded-xl p-5 text-left animate-card-in" style={{ animationDelay: "0.25s" }}>
+      <div className="card rounded-xl p-4 sm:p-5 text-left animate-card-in" style={{ animationDelay: "0.25s" }}>
         <div className="flex items-center justify-between mb-4">
           <div>
             <h3 className="text-sm font-bold text-[#0a0a0a]">where your money leaked</h3>
@@ -231,7 +231,7 @@ export default function Dashboard() {
                   setActiveClientId(client.id);
                   setActiveSection("clients");
                 }}
-                className="flex justify-between items-center p-3.5 rounded-lg border border-[#e0e0e0] bg-[#fafafa] hover:bg-white hover:border-[#0a0a0a]/15 hover:shadow-sm cursor-pointer transition-all group"
+                className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-lg border border-[#e0e0e0] bg-[#fafafa] hover:bg-white hover:border-[#0a0a0a]/15 hover:shadow-sm cursor-pointer transition-all group"
               >
                 <div className="text-left flex items-start gap-3">
                   <div className="w-9 h-9 bg-[#0a0a0a]/5 rounded-lg flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-[#0a0a0a]/8 transition-colors">
@@ -252,8 +252,8 @@ export default function Dashboard() {
                   </div>
                 </div>
 
-                <div className="text-right flex items-center gap-5 shrink-0">
-                  <div className="text-right">
+                <div className="flex items-center justify-between sm:justify-end gap-5 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-[#e0e0e0]/60">
+                  <div className="text-left sm:text-right">
                     <span className="text-[9px] uppercase tracking-wider font-bold text-[#8e8e93] block">estimated leak</span>
                     <span className="text-lg font-black text-[#0a0a0a]">{formatCurrency(leakAmount)}</span>
                   </div>
@@ -277,3 +277,5 @@ export default function Dashboard() {
     </div>
   );
 }
+
+
