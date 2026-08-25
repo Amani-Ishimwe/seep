@@ -112,12 +112,13 @@ export default function Sidebar({
                   setActiveClientId(null);
                   setActiveSection(item.id);
                 }}
-                className={`group flex items-center gap-3 px-2.5 py-2 text-xs font-semibold tracking-tight transition-all text-left rounded-lg ${
+                className={`group relative flex items-center gap-3 px-3 py-2 text-xs font-semibold tracking-tight transition-all text-left rounded-lg cursor-pointer ${
                   isActive 
-                    ? "text-[#0a0a0a] bg-white border border-[#e0e0e0] shadow-sm" 
-                    : "text-[#8e8e93] hover:text-[#0a0a0a] hover:bg-white/60"
+                    ? "text-[#0a0a0a] bg-white border border-[#e0e0e0] shadow-sm font-bold" 
+                    : "text-[#8e8e93] hover:text-[#0a0a0a] hover:bg-white/70 border border-transparent"
                 }`}
               >
+                {isActive && <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-4 bg-[#0a0a0a] rounded-r-full"></span>}
                 <i className={`${item.iconClass} text-[13px] w-4 text-center transition-colors ${
                   isActive ? "text-[#0a0a0a]" : "text-[#8e8e93] group-hover:text-[#0a0a0a]"
                 }`} />
@@ -143,12 +144,13 @@ export default function Sidebar({
                   setActiveClientId(null);
                   setActiveSection(item.id);
                 }}
-                className={`group flex items-center gap-3 px-2.5 py-2 text-[11px] font-semibold tracking-tight transition-all text-left rounded-lg ${
+                className={`group relative flex items-center gap-3 px-3 py-2 text-[11px] font-semibold tracking-tight transition-all text-left rounded-lg cursor-pointer ${
                   isActive 
-                    ? "text-[#0a0a0a] bg-white border border-[#e0e0e0] shadow-sm" 
-                    : "text-[#8e8e93] hover:text-[#0a0a0a] hover:bg-white/60"
+                    ? "text-[#0a0a0a] bg-white border border-[#e0e0e0] shadow-sm font-bold" 
+                    : "text-[#8e8e93] hover:text-[#0a0a0a] hover:bg-white/70 border border-transparent"
                 }`}
               >
+                {isActive && <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-4 bg-[#0a0a0a] rounded-r-full"></span>}
                 <i className={`${item.iconClass} text-[12px] w-4 text-center transition-colors ${
                   isActive ? "text-[#0a0a0a]" : "text-[#8e8e93] group-hover:text-[#0a0a0a]"
                 }`} />
